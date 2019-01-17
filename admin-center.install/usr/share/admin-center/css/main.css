@@ -1,0 +1,514 @@
+@font-face
+{
+	font-family: 'Noto Sans';
+	src: url(fonts/NotoSans-Regular.ttf);
+}
+
+
+.noselect {
+  -webkit-touch-callout: none; /* iOS Safari */
+  -webkit-user-select: none;   /* Chrome/Safari/Opera */
+  -khtml-user-select: none;    /* Konqueror */
+  -moz-user-select: none;      /* Firefox */
+  -ms-user-select: none;       /* Internet Explorer/Edge */
+  user-select: none;           /* Non-prefixed version, currently
+                                  not supported by any browser */
+}
+
+html{
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    -webkit-box-sizing: border-box;
+}
+
+body
+{
+
+  /*padding: 150px 0px 0px 0px;
+	padding: 0px 0px 0px 0px;*/
+	margin: 0px; height: 100%;
+	background: #f5f5f5;
+    
+    background-image: url(img/bggrey.png);
+    background-size: cover;
+    
+	color: #000;
+    font-family: Roboto,'Noto Sans' !important;
+/*	font-family: "Ubuntu light", ubuntu;*/
+/*	font-family: "SanFranciscoRegular" !important;*/
+  color: #000000;
+  transition: all 0.5s;
+  
+  
+}
+
+/* Media custom sizes */
+
+@media screen and ( max-height: 600px ){
+	body{padding: 0px 0px 0px 0px;}
+	#AdminCenterTopBack{height: 50px;}
+  }
+  
+@media screen and ( min-height: 600px ){
+	body{ padding: 150px 0px 0px 0px; }
+	#AdminCenterTopBack{height: 250px;}
+  }
+
+/* Top bar */
+
+#topbar{
+  /*background: #009688;
+  color: #ffffff;*/
+  margin: 0px;
+  border: 0px;
+  padding:3px;
+  height: 30px;
+  font: #ffffff;
+  text-align: right;
+}
+
+#AdminCenterTopBack{
+	/*height: 250px;*/
+	position: fixed;
+	top: 0px;
+	left: 0px;
+	width: 100%;
+	z-index: -9999999;
+	background-image: url(img/AdminCenterTopBanner.png);
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-color: #fbc02d;
+	transition: all 0.2s;
+}
+.AdminCenterHeader{
+	height: 150px;
+}
+
+.AdminCenterGlobalInfo{
+ 	/*margin-right: 50px;
+ 	margin-left: 50px;
+	margin-top: 150px;*/
+	font-size: 0.9em;
+}
+#AdminCenterGlobalPanelMenu{
+	padding: 50px;
+}
+
+.AdminCenterGlobalPanelMenuItemContainer{
+	float: left;
+	clear: none;
+	width: 148px;
+	height: 148px;
+	margin: 2px 2px 30px 2px;
+}
+.AdminCenterGlobalPanelMenuItemImage{
+	position: relative;
+	width: 96px;
+	height: 96px;
+	margin-left: 26px;
+	margin-top: 5px;
+	margin-bottom:15px;
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-position: center;
+	transition: all 0.2s;
+	filter:drop-shadow(3px 3px 3px grey);
+	padding: 1px;
+	background-origin:content-box;
+	
+}
+
+.AdminCenterGlobalPanelMenuItemImage:hover{
+	width: 106px;
+	height: 106px;
+	margin-left: 21px;
+	margin-top: 0px;
+	margin-bottom:10px;
+	cursor: pointer;
+}
+.AdminCenterGlobalPanelMenuItemText{
+	float: left;
+	text-align: center;
+	word-break: break-all;
+	word-wrap: break-word;
+	width: 100%;
+	font-weight: 400;
+}
+
+.AdminCenterGlobalPanelMenuItemTextHelper{
+	float: left;
+	text-align: left;
+	word-break: keep-all;
+	word-wrap: break-word;
+	width: 100%;
+	/*padding-left: 2px;
+	padding-right: 2px;*/
+	font-size: 0.9em;
+	margin-top: 5px;
+	text-align: center;
+}
+
+.AdminCenterGlobalPanelMenuItemText:hover, .AdminCenterGlobalPanelMenuItemTextHelper:hover{
+	cursor: pointer;
+	    text-shadow: 1px 1px 1px #cccccc;
+}
+
+.login_header{
+	height: 120px;
+	background: url(img/admincenter_logo.png) no-repeat #424f5a;
+	background-position: center;
+	
+}
+
+/*.topBanner{
+  margin: 0px;
+  border: 0px;
+  padding:3px;
+  height: 200px;
+  color: #ffffff;
+  background: #424f5a;
+  text-align: right;
+  margin-bottom:30px;
+  box-shadow:  0px 2px 5px #333333;
+    
+}*/
+
+.topBanner{
+	display: none;
+}
+
+.ServerInfoTable{
+ 	font-size: 1em;
+ }
+
+
+#bt_logout{
+/*  font-weight: bold;
+  border: 1px solid;
+  border-radius: 2px;
+  padding: 2px;*/
+  /*position: fixed;*/
+  bottom: 10px;
+}
+
+#bt_logout:hover{
+  cursor: pointer;
+}
+
+h1.toptitle{
+  margin: 0px;
+  border: 0px;
+  padding: 0px;
+}
+
+/* Menu Items */
+
+
+.menuitem{
+	/*padding-left: 40px;   ---> per als elements de submenu... i el ul amb id menu i class="sidebar-nav nav-pills nav-stacked",
+	 *							cal fer-li un margin-left: -40px*/
+  overflow:hidden !important;
+  white-space:nowrap !important;
+}
+
+.submenuitem{
+	background: #37474f;
+	border-left: 3px solid #FF9800;
+	margin-top: -2px !important;
+}
+
+.menuitem:hover{
+  cursor: pointer;
+  background: #FF9800 !important;
+  /*color: #ff00ff;*/
+}
+
+/* Modules Window */
+.moduleWindow{
+  margin-left: 50px;
+  overflow: auto;
+  height: 100%;
+  display: none;
+}
+
+#moduleContainer{
+  display: none;
+}
+
+.ServerInfo_Param{
+  width: 50%;
+  font-weight: bold;
+  padding: 2px 10px 2px 10px;
+}
+
+.moduleIcon{
+  display: block;
+  width: 24px;
+  height: 24px;
+  background-size: cover;
+  margin: 10px;
+  filter:grayscale(80%) contrast(200%);
+  
+
+}
+
+/* Custom snacks */
+
+.snackContainer{
+/*     white-space: nowrap;*/
+}
+
+.snackicon{
+  display: inline-block;
+  white-space: normal;
+  width: 48px;
+  height: 48px;
+  background-size: cover;
+  float: left;
+  clear: left;
+}
+
+.snack_msg{
+  width: 300px;
+  float: left;
+  clear: right;
+  margin-left: 10px;
+
+  /*display: inline-block;
+  white-space: normal;*/
+}
+
+
+/* Custom log dialog  */
+
+.modal-content-log{
+	padding: 2px;
+	border: 1px solid #ededed;
+	background-color: #fdf6e3;
+	color: #70848a;
+	font-family: monospace;
+	max-height: 500px;
+	min-height: 200px;
+	overflow-y: auto !important;
+	overflow-x: hidden !important;
+	text-overflow: "...";
+	box-shadow: rgba(0, 0, 0, 0.2) 0px 8px 17px 0px, rgba(0, 0, 0, 0.19) 0px 6px 20px 0px;
+}
+
+.progress-container{
+    height: 32px;
+    width: 100%;
+    margin: 0px;
+    padding: 5px;
+    display: block;
+    float: left;
+    clear: both;
+}
+
+
+/*
+Helper space
+*/
+
+.adminCenterHelper{
+	position: absolute;
+	bottom: 100px;
+	right: -140px;
+	width: 200px;
+	height:50px;
+	color: #ffffff;
+	text-align: left;
+	transition: all 0.5s;
+	z-index: 10001;
+}
+
+.adminCenterHelper:hover{
+	cursor: pointer;
+	right: 0px;
+	background: #FF9800;
+}
+
+.adminCenterHelperQuestion{
+	background: #FF9800;
+	width: 50px;
+	height: 50px;
+	font-size: xx-large;
+	float: left;
+	padding-left: 15px;
+}
+
+.adminCenterHelperQuestion:after, .adminCenterHelperQuestion:before{
+	left: 50px;
+	top: 50%;
+	border: solid transparent;
+	content: " ";
+	height: 0;
+	width: 0;
+	position: absolute;
+	pointer-events: none;
+}
+.adminCenterHelperQuestion:before{
+	border-color: rgba(255, 152, 0, 0);
+	border-left-color: #FF9800;
+	border-width: 10px;
+	margin-top: -10px;
+	
+}
+.adminCenterHelperDescription{
+	float: left;
+	margin: 5px 0px 0px 15px;
+	font-size: x-large;	
+
+}
+
+#AdminCenterFooter{
+	border: 1px solid #bbbbbb;
+	color: #424F5A;
+	background-color: #eeeeee;
+    height: 1.6em;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+	padding-left:50px;
+	transition: all 0.1s;
+	box-shadow: inset 0px 3px 5px 0px rgba(0,0,0,0.1);
+	z-index: 10002;
+
+}
+
+
+
+
+.divlogline{
+	float: left;
+	clear: both;
+}
+
+.divloglinemodule{width: 150px; float: left; text-overflow: "...";}
+.divloglinetime{width: 80px; float: left; text-overflow: "...";}
+.divloglineicon{
+	float: left;
+	width: 15px;
+	height: 15px;
+	margin-right:15px;
+	margin-top: 2px;
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size: cover;
+}
+.divloglinemsg{float: left;}
+
+.divloglineactive{
+	font-weight: bold;
+	animation: pulse 3s infinite;
+	width: 100%;
+	color: #ffffff;
+}
+
+@keyframes pulse {
+  0% {
+    background-color: #ffbb33;
+  }
+  50% {
+    background-color: #FF8800;
+  }
+  100% {
+    background-color: #ffbb33;
+  }
+}
+
+
+/*tr{
+  border-bottom: 1px solid #cccccc;
+};*/
+
+/* Material overwrite*/
+
+/* Palette generated by Material Palette - materialpalette.com/orange/deep-orange */
+/*
+.dark-primary-color, .panel-heading    { background: #F57C00 !important; color: #ffffff;}
+.default-primary-color { background: #FF9800  !important; color: #ffffff;}
+.light-primary-color   { background: #FFE0B2  !important; color: #ffffff;}
+.text-primary-color    { color: #212121  !important; }
+.accent-color          { background: #FF5722  !important; }
+.primary-text-color    { color: #212121  !important; }
+.secondary-text-color  { color: #727272  !important; }
+.divider-color         { border-color: #B6B6B6  !important; }
+*/
+
+/*.dark-primary-color, .panel-heading    { background: #424F5A !important; color: #ffffff;}*/
+/*.dark-primary-color, .panel-heading    { background: #263238 !important; color: #ffffff;}*/
+/*.default-primary-color { background: #263238  !important; color: #ffffff;}*/
+.default-primary-color { background: #263238  !important; color: #ffffff;}
+.light-primary-color   { background: #263238  !important; color: #ffffff;}
+.text-primary-color    { color: #212121  !important; }
+.accent-color          { background: #FF5722  !important; }
+.primary-text-color    { color: #212121  !important; }
+.secondary-text-color  { color: #727272  !important; }
+.divider-color         { border-color: #B6B6B6  !important; }
+
+.btn-primary        { background: #424f5a  !important; color: #ffffff !important;}
+
+.modal-body{
+    max-height: calc(100vh - 341px) !important;
+    min-width: 610px;
+    overflow-y: auto !important;
+	
+}
+
+
+/*
+.dark-primary-color, .panel-heading       { background: #C2185B !important;  color: #ffffff;}
+.default-primary-color { background: #E91E63; color: #ffffff; }
+.light-primary-color,    { background: #F8BBD0; color: #ffffff; }
+body   { background: #F8BBD0; color: #000000; }
+.text-primary-color    { color: #FFFFFF; }
+.accent-color          { background: #FF4081; }
+.primary-text-color    { color: #212121; }
+.secondary-text-color  { color: #727272; }
+.divider-color         { border-color: #B6B6B6; }
+*/
+
+.AdminCenterFloatButton{
+	position: fixed;
+	width: 48px; height: 48px;
+	left: 10px;
+	background-size: cover;
+	background-color:rgba(0,0,0,0);
+	box-shadow: rgba(0, 0, 0, 0.14) 0px 2px 2px 0px, rgba(0, 0, 0, 0.12) 0px 1px 5px 0px, rgba(0, 0, 0, 0.2) 0px 3px 1px -2px;
+	border-radius: 50%;
+	transition: all 0.3s;
+}
+
+.AdminCenterFloatButton:hover{
+	width: 56px;
+	height: 56px;
+	left: 6px;
+	cursor: pointer;
+}
+
+.AdminCenterFloatButton:active{
+	-webkit-filter: brightness(1.25); filter: brightness(1.25);
+}
+
+#menu-toggle-2{
+	top: 20px;
+	background-image: url(img/admincenter_menu.png);
+}
+#menu-toggle-2:hover{
+	top: 16px;
+}
+
+#menu-back{
+	top: 90px;
+	background-image: url(img/admincenter_back.png);
+}
+
+#bt_logout{
+	bottom: 50px;
+	background-image: url(img/admincenter_quit.png);
+}
+
+#menu-back:hover{top: 86px;}
+#bt_logout:hover{bottom: 46px;}

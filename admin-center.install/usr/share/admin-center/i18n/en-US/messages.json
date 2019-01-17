@@ -1,0 +1,46 @@
+{
+  "messages" : {
+    "" : {
+      "domain" : "adminCenter",
+      "lang"   : "en",
+      "plural_forms" : "nplurals=2; plural=(n != 1);"
+    },
+    "Help":["Help"],
+    "Home":["Home"],
+    "Unauthenticated":["Unauthenticaded"],
+    "main.Authentication":["Authentication"],
+    "main.Username":["Username"],
+    "main.Password":["Password"],
+    "Server Admin" : [ "Server Adminisration"],
+    "Server Info" : [ "Server Info"],
+    "Hostname" : [ "Hostname"],
+    "Server IP" : [ "IP Address"],
+    "Internal Domain" : ["Classroom domain"],
+    "Internal Interface" : [ "Classrom interface"],
+    "External Interface" : [ "External interface"],
+    "Internal Mask" : [ "Classroom mask"],
+    "Internal Network" : [ "Classrom network"],
+    "Primary DNS Server" : [ "Primary DNS Server"],
+    "Secondary DNS Server" : [ "Secondary DNS Server"],
+    "Service Status" : [ "Service Status"],
+    "Address range" : [ "Address Range"],
+    "Max. Hosts" : [ "Max. Hosts"],
+    "Last update" : [ "Last update"],
+    "Mirror size" : [ "Mirror size"],
+    "Proxy" : [ "Proxy Server"],
+    "Proxy status" : [ "Proxy status"],
+    "Proxy name" : [ "Proxy name"],
+    "Proxy port" : [ "Proxy port"],
+    "N4d.Error.Connection" : ["N4d Error Connection"],
+    "main_confirm_cancel_task" : ["Are you sure to cancel this task?"],
+    "main_task_cancelled": ["Task cancelled"],
+    "main_log_connected_message": ["Connected to server logging..."],
+    "log_connection_error": ["Log connection error"],
+    "log_connection_closed": ["Log connection closed"],
+    "Available.Modules":["Available Modules"],
+    "WIP": ["Working..."],
+    "Server log...": ["Server log..."],
+    "Close_log":["Close log"]
+  
+  }
+}

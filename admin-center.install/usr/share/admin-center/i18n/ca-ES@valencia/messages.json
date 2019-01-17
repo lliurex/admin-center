@@ -1,0 +1,51 @@
+{
+  "messages" : {
+    "" : {
+      "domain" : "adminCenter",
+      "lang"   : "ca_ES@valencia",
+      "plural_forms" : "nplurals=2; plural=(n != 1);"
+    },
+    "Help":["Ajuda"],
+    "Home":["Inici"],
+    "Unauthenticated":["Autenticació incorrecta"],
+    "main.Authentication":["Autenticació"],
+    "main.Username":["Nom d'usuari"],
+    "main.Password":["Contrasenya"],
+    "Username":["Nom d'usuari"],
+    "Password":["Contrasenya"],
+    "Server Admin" : [ "Administra el servidor"],
+    "Server Info" : [ "Informació del servidor"],
+    "Hostname" : [ "Nom de l'equip"],
+    "Server IP" : [ "Adreça IP del servidor"],
+    "Internal Domain" : ["Domini de l'aula"],
+    "Internal Interface" : [ "Interfície interna"],
+    "External Interface" : [ "Interfície externa"],
+    "Internal Mask" : [ "Màscara interna"],
+    "Internal Network" : [ "Xarxa interna"],
+    "Primary DNS Server" : [ "Servidor DNS primari"],
+    "Secondary DNS Server" : [ "Servidor DNS secundari"],
+    "Service Status" : [ "Estat del servei"],
+    "Address range" : [ "Interval d'adreces"],
+    "Max. Hosts" : [ "Nombre màxim de clients"],
+    "Last update" : [ "Última actualització"],
+    "Mirror size" : [ "Mida de la rèplica"],
+    "Proxy" : [ "Servidor intermediari (proxy)"],
+    "Proxy status" : [ "Estat del servidor intermediari"],
+    "Proxy name" : [ "Nom del servidor intermediari"],
+    "Proxy port" : [ "Port del servidor intermediari"],
+    "Available.Modules":["Mòduls disponibles"],
+    "N4d.Error.Connection" : ["S'ha produït un error en la connexió al servei d'administració remota n4d"],
+    "main_confirm_cancel_task" : ["Esteu segur que voleu cancel·lar la tasca?"],
+    "main_task_cancelled": ["La tasca s'ha cancel·lat"],
+    "main_log_connected_message": ["Connectat al servei de registre del servidor"],
+    "log_connection_error": ["Error de connexió al registre"],
+    "log_connection_closed": ["S'ha tancat la connexió al registre"],
+    "WIP": ["S'està treballant..."],
+    "Server log...": ["Registre del servidor..."],
+    "Close_log":["Tanca el registre"],
+    "Cancel Task":["Cancel·la la tasca"]
+    
+    
+    
+  }
+}

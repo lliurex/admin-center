@@ -1,0 +1,10 @@
+[SETUP]
+type=python
+path=RemoteWebGui.py
+class=RemoteWebGui
+[METHODS]
+remote_execute=anonymous
+create_connection=anonymous
+close_connection=anonymous
+run_into_connection=anonymous
+getXpraConnections=anonymous

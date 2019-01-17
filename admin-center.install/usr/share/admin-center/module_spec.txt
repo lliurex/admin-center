@@ -1,0 +1,20 @@
+{
+  "id": "module_id", // Ha de ser el nom de la carpeta i es convertirà amb l'id del div
+  "version": "0.1",
+  "name": "LMD",
+  "description": "Thin Client Manager",
+  "main":"main.html", // Pot ser qualsevol fitxer html
+  "components":
+  [
+    {
+      "menuEntry":"Component 1",
+      "id":"lmd_comp1",
+      "main":"component1.html"
+    },
+    {
+      "menuEntry":"Component 2",
+      "id":"lmd_comp2",
+      "main":"component2.html"
+    }
+  ]
+}
