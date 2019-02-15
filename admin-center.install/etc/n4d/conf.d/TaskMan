@@ -3,11 +3,11 @@ type=python
 path=TaskMan.py
 class=TaskMan
 [METHODS]
-newTask=admin,admins,adm
-cancelTask=admin,admins,adm
+newTask=admin,admins,sudo
+cancelTask=admin,admins,sudo
 getWS=anonymous,*
 getTasks=anonymous,*
 getTask=anonymous,*
 getTaskStatus=anonymous,*
 listenTask=anonymous,*
-prepareLogForDownload=admin,admins,adm
+prepareLogForDownload=admin,admins,sudo
