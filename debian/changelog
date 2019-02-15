@@ -1,3 +1,9 @@
+admin-center (0.8.2) bionic; urgency=medium
+
+  * Adding sudo group
+
+ -- Juan Ramon Pelegrina <juapesai@hotmail.com>  Fri, 15 Feb 2019 09:07:30 +0100
+
 admin-center (0.8.1) bionic; urgency=medium
 
   * Adding n4d module load in postinst
