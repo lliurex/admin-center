@@ -1,3 +1,10 @@
+admin-center (0.9) bionic; urgency=medium
+
+  * Disable function getXpraConnections at RemoteWebGui
+  * Close open pipe at actasks
+
+ -- Juanma Navarro Mañez <juanma1980@gmail.com>  Fri, 05 Jul 2019 09:01:34 +0200
+
 admin-center (0.8.2) bionic; urgency=medium
 
   * Adding sudo group
