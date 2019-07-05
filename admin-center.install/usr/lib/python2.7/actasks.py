@@ -153,6 +153,8 @@ class Task:
         '''
         temp = open(self.filepipe,'a+b')
         proc = subprocess.Popen([self.cancelcommand],  shell=True, stdout=temp, preexec_fn=os.setsid).communicate()
+        #close the pipe
+        temp.close()
 
 
     def stop(self):

@@ -122,22 +122,26 @@ class RemoteWebGui:
 		return 0
 
 	def getXpraConnections(self, identifier):
+		######### This function ALWAYS throw an exception
+		#This return is my port of this function to native python	
+		return([])
 		try:
 			from plumbum.cmd import grep, cut, ps
 			ret=list();
-			pipeline = ps['aux'] | grep[identifier] | grep['DISPLAY'] | cut['-d', ';', '-f', '1'] | cut['-d', '=', '-f', '2']
-			
+			display_str=''
+			pipeline = ps['ef'] | grep[identifier] | grep['DISPLAY'] | cut['-d', ';', '-f', '1'] | cut['-d', '=', '-f', '2']
 			display_str = pipeline().rstrip('\n') # execute
 			display_arr=display_str.split();
 
 			for display in display_arr:
+
 				pipeline = ps['aux'] | grep[display] | grep['bind-tcp'] | cut['-d', '=', '-f', '2'] | cut['-d', ' ', '-f', '1'] | cut['-d', ':', '-f', '2']
 				port = pipeline().rstrip('\n') # execute
 				
 				ret.append([port, display]);
-		
 			return ret;
 		except Exception as e:
+			print("Exception: %s"%e)
 			return []
 
 #class RemoteWebGui
