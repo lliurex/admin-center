@@ -1,3 +1,11 @@
+admin-center (0.10) bionic; urgency=medium
+
+  * getXpraConnections ported to native python
+  * Add sleep to prevent race condition between display is available and desktop is launched
+  * Many minor improvements
+
+ -- Juanma Navarro Mañez <juanma1980@gmail.com>  Wed, 10 Jul 2019 14:06:05 +0200
+
 admin-center (0.9) bionic; urgency=medium
 
   * Disable function getXpraConnections at RemoteWebGui
