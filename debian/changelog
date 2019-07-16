@@ -1,3 +1,9 @@
+admin-center (0.10.1) bionic; urgency=medium
+
+  * Removed icones folder
+
+ -- Juanma Navarro Mañez <juanma1980@gmail.com>  Tue, 16 Jul 2019 14:38:16 +0200
+
 admin-center (0.10) bionic; urgency=medium
 
   * getXpraConnections ported to native python
