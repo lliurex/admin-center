@@ -190,7 +190,7 @@ function WriteMenu($modules){
               <!--http://stackoverflow.com/questions/90178/make-a-div-fill-the-height-of-the-remaining-screen-space -->
               
               <li><a class='menuitem' target='info'>
-                <span class='fa-stack fa-lg pull-left'><div class='moduleIcon' style='background-image:url(icones/defaultColor.png)'></div>
+                <span class='fa-stack fa-lg pull-left'><div class='moduleIcon' style='background-image:url(icons/defaultColor.png)'></div>
                 </span>Home
                <!--span style="float:left; display:block; margin-top:-1.5em; font-size: 0.9em;">pajarito</span-->
               </a>
