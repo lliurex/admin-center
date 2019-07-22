@@ -4,6 +4,10 @@
 	src: url(fonts/NotoSans-Regular.ttf);
 }
 
+.control-label
+{
+	color:#777777 !important;
+}
 
 .noselect {
   -webkit-touch-callout: none; /* iOS Safari */
@@ -77,8 +81,10 @@ body
 	z-index: -9999999;
 	background-image: url(img/AdminCenterTopBanner.png);
 	background-repeat: no-repeat;
-	background-size: cover;
-	background-color: #fbc02d;
+	background-size: auto;
+	background-position: 50% 10%;
+/*	background-color: #fbc02d;*/
+	background-color: #dddddd;
 	transition: all 0.2s;
 }
 .AdminCenterHeader{
@@ -156,9 +162,11 @@ body
 
 .login_header{
 	height: 120px;
-	background: url(img/admincenter_logo.png) no-repeat #424f5a;
+/*	background: url(img/admincenter_logo.png) no-repeat #424f5a;*/
+	background: url(img/admincenter_logo.png) no-repeat #ffffff;
+	background-size:contain;
 	background-position: center;
-	
+	margin:15px;
 }
 
 /*.topBanner{
@@ -442,6 +450,7 @@ Helper space
 /*.default-primary-color { background: #263238  !important; color: #ffffff;}*/
 .default-primary-color { background: #263238  !important; color: #ffffff;}
 .light-primary-color   { background: #263238  !important; color: #ffffff;}
+.text-primary-color    { color: #212121  !important; }
 .text-primary-color    { color: #212121  !important; }
 .accent-color          { background: #FF5722  !important; }
 .primary-text-color    { color: #212121  !important; }
