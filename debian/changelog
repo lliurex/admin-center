@@ -1,3 +1,9 @@
+admin-center (0.10.3.1) bionic; urgency=medium
+
+  * fix menu imgs
+
+ -- Juanma Navarro Mañez <juanma1980@gmail.com>  Tue, 23 Jul 2019 13:29:58 +0200
+
 admin-center (0.10.3) bionic; urgency=medium
 
   * Update js libs
