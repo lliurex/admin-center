@@ -228,7 +228,8 @@ h1.toptitle{
 
 .menuitem:hover{
   cursor: pointer;
-  background: #FF9800 !important;
+  /*background: #FF9800 !important;*/
+  background: #55a9a6 !important;
   /*color: #ff00ff;*/
 }
 
@@ -503,7 +504,7 @@ body   { background: #F8BBD0; color: #000000; }
 
 #menu-toggle-2{
 	top: 20px;
-	background-image: url(img/admincenter_menu.png);
+	background-image: url(img/admincenter_menu.svg);
 }
 #menu-toggle-2:hover{
 	top: 16px;
@@ -511,12 +512,12 @@ body   { background: #F8BBD0; color: #000000; }
 
 #menu-back{
 	top: 90px;
-	background-image: url(img/admincenter_back.png);
+	background-image: url(img/admincenter_back.svg);
 }
 
 #bt_logout{
 	bottom: 50px;
-	background-image: url(img/admincenter_quit.png);
+	background-image: url(img/admincenter_quit.svg);
 }
 
 #menu-back:hover{top: 86px;}
