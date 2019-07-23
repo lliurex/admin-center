@@ -126,7 +126,7 @@ AdminCenter.prototype.initModule=function initModule(target, moduleScriptsLength
 				}
    } else {
 		if (($(this).scrollTop()<=50)) {
-				$("#AdminCenterTopBack").css("height", 250);
+				$("#AdminCenterTopBack").css("height", 175);
 				$("body").css("padding-top", 150);
 				$("#AdminCenterTopBack").css("filter", "opacity(100%)");
 				$(".container").css("margin-bottom", 15);
@@ -242,6 +242,8 @@ AdminCenter.prototype.setHeaderBanner=function setHeaderBanner(url){
   var path="css/img/AdminCenterTopBanner.png";
   if (url!=null) path=url;
   $("#AdminCenterTopBack").css("background-image", "url("+path+")");
+  $("#AdminCenterTopBack").css("background-size", "auto");
+  $("#AdminCenterTopBack").css("background-position", "50% 15%");
 }
 
 AdminCenter.prototype.addMeToHistory=function addMeToHistory(item){
@@ -273,19 +275,6 @@ AdminCenter.prototype.bindMenus=function bindMenus(){
     
     var parentModule=$(this).attr("module");
     
-    
-    /*// setting header for module
-    var currentheadermodule="";
-    //alert(typeof(parentModule));
-    if (typeof(parentModule)==="undefined") currentheadermodule=target;
-    else currentheadermodule=parentModule;
-    console.log(self.componentsLoaded);
-    alert(currentheadermodule);
-    */
-    
-    
-    
-    //alert(target+" "+parentModule);
     // Send hiden event to any module different than target
     $(".moduleWindow:not(#"+target+")").trigger("componentHidden");
     
@@ -348,7 +337,7 @@ AdminCenter.prototype.bindMenus=function bindMenus(){
 		
 		
 		// Setting scroll to default values
-		$("#AdminCenterTopBack").css("height", 250);
+		$("#AdminCenterTopBack").css("height", 175);
 		$("body").css("padding-top", 150);
 		$("#AdminCenterTopBack").css("filter", "opacity(100%)");
 		$(".container").css("margin-bottom", 15);

@@ -205,6 +205,8 @@
    height: 256px;
    width: 250px;
    background-image: url(img/admincenter_logo_menu.png);
+   background-repeat: no-repeat;
+   background-size:contain;
    /*
    
    display: block;
