@@ -1,3 +1,9 @@
+admin-center (0.10.2) bionic; urgency=medium
+
+  * Theme fixes
+
+ -- Juanma Navarro Mañez <juanma1980@gmail.com>  Tue, 23 Jul 2019 11:43:31 +0200
+
 admin-center (0.10.1) bionic; urgency=medium
 
   * Removed icones folder
