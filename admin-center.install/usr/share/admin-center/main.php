@@ -147,7 +147,7 @@ function writeHeaders($mod){
     <!-- Common Styles -->
      <meta charset="UTF-8">
      <title>Admin Center</title>
-     <link rel="icon" href="icons/default.png">
+     <link rel="icon" href="icones/default.png">
      
      
     <link rel="stylesheet" href="css/sidebar-menu.css">
@@ -186,11 +186,11 @@ function WriteMenu($modules){
       <ul class="sidebar-nav nav-pills nav-stacked" id="menu">
               <!--  Main page link  -->
               <!--li><a class='menuitem' onclick="window.location.reload();"-->
-              <!-- MIREM CON AJUSTAR LO DEL MIG AL QUE QUEDA... -->
+              <!-- Take a look here... -->
               <!--http://stackoverflow.com/questions/90178/make-a-div-fill-the-height-of-the-remaining-screen-space -->
               
               <li><a class='menuitem' target='info'>
-                <span class='fa-stack fa-lg pull-left'><div class='moduleIcon' style='background-image:url(icons/defaultColor.png)'></div>
+                <span class='fa-stack fa-lg pull-left'><div class='moduleIcon' style='background-image:url("icones/defaultColor.svg")'></div>
                 </span>Home
                <!--span style="float:left; display:block; margin-top:-1.5em; font-size: 0.9em;">pajarito</span-->
               </a>
