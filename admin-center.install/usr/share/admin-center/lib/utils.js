@@ -48,7 +48,7 @@ UtilsClass.prototype.msg=function msg(message, type){
 		
 		// Prepare snackbar
 		var snackbarmsg="<div class='snackContainer'>"+
-		"<div class='snackicon' style='background-image:url(icones/"+
+		"<div class='snackicon' style='background-image:url(icons/"+
 						icon+")'></div><div class='snack_msg'>"+message+"</div></div>";
 		
 		// Prepare bottom log line (module, date, icon and message)
