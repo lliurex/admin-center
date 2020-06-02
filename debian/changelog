@@ -1,3 +1,9 @@
+admin-center (0.10.3.2) bionic; urgency=medium
+
+  * Add missing python-psutil dependency
+
+ -- M.Angel Juan <m.angel.juan@gmail.com>  Tue, 02 Jun 2020 13:38:51 +0200
+
 admin-center (0.10.3.1) bionic; urgency=medium
 
   * fix menu imgs

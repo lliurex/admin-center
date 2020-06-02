@@ -10,7 +10,7 @@ Homepage: http://www.lliurex.net
 
 Package: admin-center
 Architecture: all
-Depends: ${misc:Depends}, php7.2-common, libapache2-mod-php7.2, php7.2-cli, php7.2-curl, php7.2-xmlrpc, python-simplewebsocketserver, python-websocket, websockify, xpra, python-plumbum
+Depends: ${misc:Depends}, php7.2-common, libapache2-mod-php7.2, php7.2-cli, php7.2-curl, php7.2-xmlrpc, python-simplewebsocketserver, python-websocket, websockify, xpra, python-plumbum, python-psutil
 Description: Web Administration Center
  This interface allows to configure n4d serives
  on LliureX Server via web.
