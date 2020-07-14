@@ -1,0 +1,19 @@
+{
+    "linkid":"admin-center",
+    "link":"http://admin-center",
+    "icon":"admincenter.svg",
+    "type": "admin",
+    "name": {
+        "default":"AdminCenter",
+        "valencia":"AdminCenter",
+        "es":"AdminCenter"
+    },
+    "description": {
+        "default":"LliureX Administration Center",
+        "valencia":"Centre d'Administració de LliureX",
+        "es":"Centro de Administración de LliureX"
+    },
+    "order":10,
+    "editable":false,
+    "visibility":true
+}
