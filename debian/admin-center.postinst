@@ -48,6 +48,9 @@ case "$1" in
 	n4d-modules enable-plugin /etc/n4d/conf.d/RemoteWebGui || true
 	n4d-modules enable-plugin /etc/n4d/conf.d/TaskMan || true
 
+	#Changes permissions to admin-center link json file
+	chown www-data:www-data /var/lib/lliurex-www/links/admin-center.json || true
+
     ;;
 
     abort-upgrade|abort-remove|abort-deconfigure)
