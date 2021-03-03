@@ -1,3 +1,9 @@
+admin-center (0.10.4) bionic-updates; urgency=medium
+
+  * Edit ltsp images graphically with vnc
+
+ -- M.Angel Juan <m.angel.juan@gmail.com>  Tue, 02 Mar 2021 12:07:36 +0100
+
 admin-center (0.10.3.4) bionic; urgency=medium
 
   * Changed the permissions of the link json file to www-data

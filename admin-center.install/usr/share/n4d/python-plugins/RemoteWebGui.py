@@ -79,11 +79,60 @@ class RemoteWebGui:
 		return {"status":True, "msg":{"port":str(port), "display":display}}
 	#def remote_execute
 	
+	def create_connection_vnc(self, id, options):
+		try:
+			startup='/etc/X11/Xsession'
+			if options and isinstance(options,str):
+				if options == 'terminal':
+					startup='/usr/bin/xterm'
+				elif options == 'minimal':
+					startup='/usr/bin/jwm'
+			port=self.get_first_free_port()
+			self._debug("PORT: %s DISPLAY: %s"%(port,id))
+			chroot = "/opt/ltsp/{}".format(id)
+			self.machineid=id
+			self.nspawn=subprocess.Popen("/usr/bin/systemd-nspawn -E SHELL=/bin/bash -E LANG=es_ES.utf8 --private-users=0 --private-users-chown -M {} -D{} tigervncserver -SecurityTypes None -depth 24 -geometry 1024x768 -fg -xstartup {}".format(id,chroot,startup),shell=True)
+			retry = 3
+			while retry>0:
+				try:
+					p=subprocess.check_output('pgrep tigervncserver',shell=True)
+					p=p.strip()
+					retry=0
+				except Exception as e:
+					time.sleep(1)
+					retry-=1
+					pass
+			self.tiger=int(p)
+		except Exception as e:
+			print("[RemoteWebGui] create_connection Exception: {}".format(e))
+			return {"status":False,"msg":e}
+		return {"status":True, "msg":{"port": str(port), "process": self.nspawn.pid}}
+	
 	def close_connection(self, port):
 		retval=0
 		try:
 			cmd='xpra stop tcp:0.0.0.0:'+str(port)
 			subprocess.call([cmd], shell=True)
+		except Exception as e:
+			print ("close_connection: %s"%e)
+			retval=-1
+		return retval
+	#def close_connection
+
+	def close_connection_vnc(self, port):
+		retval=0
+		try:
+			import os
+			try:
+				os.kill(self.tiger,15)
+				time.sleep(1)
+				os.kill(self.websockify.pid,15)
+				time.sleep(1)
+				os.system('machinectl kill {}'.format(self.machineid))
+				os.system('machinectl kill {}'.format(self.machineid))
+				os.system('machinectl kill {}'.format(self.machineid))
+			except:
+				pass
 		except Exception as e:
 			print ("close_connection: %s"%e)
 			retval=-1
@@ -100,6 +149,25 @@ class RemoteWebGui:
 		try:
 			#//p=subprocess.call([cmd], shell=True)
 			p=subprocess.Popen([cmd], shell=True)
+		except Exception as e:
+			print ("Run_into_connection: %s"%e)
+			p=-1
+		return p
+	#def run_into_connection
+
+	def run_into_connection_vnc(self, command, port):
+		self._debug("Sleeping... {}\n".format(port))
+		#There's a race condition and sometimes DISPLAY is not set... wait a moment for it
+		time.sleep(7)
+		self._debug("Wake up...\n")
+		#cmd='export DISPLAY='+display+";"+command
+		cmd = "/usr/bin/websockify --web /usr/share/novnc {} localhost:5901".format(port)
+		self._debug(cmd)
+		try:
+			#//p=subprocess.call([cmd], shell=True)
+			p=subprocess.Popen([cmd], shell=True)
+			self.websockify = p
+			time.sleep(3	)
 		except Exception as e:
 			print ("Run_into_connection: %s"%e)
 			p=-1
