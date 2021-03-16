@@ -27,7 +27,7 @@ class RemoteWebGui:
 				display+=1
 			return ":"+str(display)
 		except Exception as e:
-			print "Captured: "+str(e)
+			print("Captured: "+str(e))
 			return {'status': False, 'msg':'[RemoteGuiManager] '+str(e)}
 	#def get_first_display
 	
@@ -67,7 +67,7 @@ class RemoteWebGui:
 		try:
 			p=subprocess.call([xpra_cmd], shell=True);			
 		except Exception as e:
-			print "[RemoteWebGui] create_connection Exception: ",e
+			print("[RemoteWebGui] create_connection Exception: {}".format(e))
 			return n4d.responses.build_failed_call_response(ret_msg=str(e))
 			# return {'status':False, 'msg': str(e)}
 		
@@ -119,7 +119,7 @@ class RemoteWebGui:
 			cmd='xpra stop tcp:0.0.0.0:'+str(port)
 			subprocess.call([cmd], shell=True)
 		except Exception as e:
-			print ("close_connection: %s"%e)
+			print("close_connection: %s"%e)
 			retval=-1
 		return n4d.responses.build_successful_call_response(retval)
 		# return retval
@@ -140,7 +140,7 @@ class RemoteWebGui:
 			except:
 				pass
 		except Exception as e:
-			print ("close_connection: %s"%e)
+			print("close_connection: %s"%e)
 			retval=-1
 		return n4d.responses.build_successful_call_response(retval)
 		# return retval
@@ -157,7 +157,7 @@ class RemoteWebGui:
 			#//p=subprocess.call([cmd], shell=True)
 			p=subprocess.Popen([cmd], shell=True)
 		except Exception as e:
-			print ("Run_into_connection: %s"%e)
+			print("Run_into_connection: %s"%e)
 			p=-1
 		return n4d.responses.build_successful_call_response(p)
 		# return p
@@ -177,7 +177,7 @@ class RemoteWebGui:
 			self.websockify = p
 			time.sleep(3	)
 		except Exception as e:
-			print ("Run_into_connection: %s"%e)
+			print("Run_into_connection: %s"%e)
 			p=-1
 		return n4d.responses.build_successful_call_response(p)
 		# return p

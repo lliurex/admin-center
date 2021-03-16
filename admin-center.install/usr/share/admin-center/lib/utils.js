@@ -457,7 +457,7 @@ UtilsClass.prototype.n4dSecure=function n4dSecure(credentials, n4dclass, n4dmeth
 			else n4dargs=credentials;
 
 	// Adding Class
-	n4dargs.push(n4dclass);
+	//n4dargs.push(n4dclass);
 	//console.log(n4dargs);
 	//alert(typeof(n4dargs));
 	
@@ -504,7 +504,10 @@ UtilsClass.prototype.n4dSecure=function n4dSecure(credentials, n4dclass, n4dmeth
 				
 				var ret=JSON.parse(JSON.parse(ret_str));
 				
-				
+				if (ret.status != 0){
+					throw('N4d call failed '+n4dmethod+' '+n4dargs)
+				}
+				ret = ret.return
 				callback(ret);
 				} catch(err){
 					alert(err);
@@ -539,7 +542,9 @@ UtilsClass.prototype.n4d=function n4d(credentials, n4dclass, n4dmethod, arglist,
 	//		else n4dargs=Utils.crypt.encrypt(credentials);
 
 	// Adding Class
-	n4dargs.push(n4dclass);
+	if (n4dclass !== null && n4dclass != ""){
+		n4dargs.push(n4dclass);
+	}
 	//console.log(n4dargs);
 	//alert(typeof(n4dargs));
 	
@@ -584,7 +589,10 @@ UtilsClass.prototype.n4d=function n4d(credentials, n4dclass, n4dmethod, arglist,
 				ret_str=(CryptoJS.AES.decrypt(JSON.stringify(ret_coded), sessionStorage.password,{format: CryptoJSAesJson}).toString(CryptoJS.enc.Utf8));
 				
 				var ret=JSON.parse(JSON.parse(ret_str));
-				
+				if (ret.status != 0){
+					throw('N4d call failed '+n4dmethod+' '+n4dargs)
+				}
+				ret = ret.return
 				
 				callback(ret);
 				} catch(err){

@@ -124,7 +124,7 @@ class TaskMan():
             # return {"status": False, "msg":str(e)}
 
     def cancelTask(self, taskid):
-        print "REMOVING ", str(taskid)
+        print("REMOVING {}".format(str(taskid)))
         return n4d.responses.build_successful_call_response(self.tasks[taskid].stop())
         # return self.tasks[taskid].stop()
 
@@ -133,8 +133,8 @@ class TaskMan():
         adds a new listener to tasks listener
         '''
         try:
-            print ("listening for task ", taskid)
-            print (self.tasks[taskid].get())
+            print("listening for task {}".format(taskid))
+            print("{}".format(self.tasks[taskid].get()))
             return n4d.responses.build_successful_call_response()
             # #return {"status": True, "msg":self.tasks[taskid].get()}
         except Exception as e:
@@ -147,7 +147,7 @@ class TaskMan():
                 while (str(task.filepipe)==""): # Waitint to have task ready
                     time.sleep(0.5)
                 
-                print str(task.filepipe)
+                print(str(task.filepipe))
                 if not os.path.exists(task.filepipe):
                     time.sleep(1)
                 else:
@@ -166,8 +166,8 @@ class TaskMan():
                         line=pipe.readline()
                         task.seek = pipe.tell()
             except Exception as e:
-                print "[TASKMANAGER] Exception while reading pipe "+str(e)
+                print("[TASKMANAGER] Exception while reading pipe "+str(e))
         except Exception as e:
-            print "[TASKMANAGER] Exception while reading pipe "+str(e)
+            print("[TASKMANAGER] Exception while reading pipe "+str(e))
         self.ws.send(str({"id": str(task.taskid), "line":"[TASKMANAGER] process finished"}))
         

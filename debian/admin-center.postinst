@@ -45,8 +45,8 @@ case "$1" in
 		invoke-rc.d apache2 reload || true
 	fi
 
-	n4d-modules enable-plugin /etc/n4d/conf.d/RemoteWebGui || true
-	n4d-modules enable-plugin /etc/n4d/conf.d/TaskMan || true
+	n4d-modules enable-plugin /etc/n4d/conf.d/RemoteWebGui.json || true
+	n4d-modules enable-plugin /etc/n4d/conf.d/TaskMan.json || true
 
 	#Changes permissions to admin-center link json file
 	chown www-data:www-data /var/lib/lliurex-www/links/admin-center.json || true
