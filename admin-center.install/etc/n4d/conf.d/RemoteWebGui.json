@@ -1,0 +1,49 @@
+{
+    "SETUP": {
+        "type": "python",
+        "path": "RemoteWebGui.py",
+        "class": "RemoteWebGui"
+    },
+    "METHODS": {
+        "remote_execute": {
+            "allowed_groups": [
+                "anonymous"
+            ]
+        },
+        "create_connection": {
+            "allowed_groups": [
+                "anonymous"
+            ]
+        },
+        "create_connection_vnc": {
+            "allowed_groups": [
+                "anonymous"
+            ]
+        },
+        "close_connection": {
+            "allowed_groups": [
+                "anonymous"
+            ]
+        },
+        "close_connection_vnc": {
+            "allowed_groups": [
+                "anonymous"
+            ]
+        },
+        "run_into_connection": {
+            "allowed_groups": [
+                "anonymous"
+            ]
+        },
+        "run_into_connection_vnc": {
+            "allowed_groups": [
+                "anonymous"
+            ]
+        },
+        "getxpraconnections": {
+            "allowed_groups": [
+                "anonymous"
+            ]
+        }
+    }
+}
