@@ -5,51 +5,51 @@
         "class": "TaskMan"
     },
     "METHODS": {
-        "newtask": {
+        "newTask": {
             "allowed_groups": [
                 "admin",
                 "admins",
                 "sudo"
             ]
         },
-        "canceltask": {
+        "cancelTask": {
             "allowed_groups": [
                 "admin",
                 "admins",
                 "sudo"
             ]
         },
-        "getws": {
+        "getWS": {
             "allowed_groups": [
                 "anonymous",
                 "*"
             ]
         },
-        "gettasks": {
+        "getTasks": {
             "allowed_groups": [
                 "anonymous",
                 "*"
             ]
         },
-        "gettask": {
+        "getTask": {
             "allowed_groups": [
                 "anonymous",
                 "*"
             ]
         },
-        "gettaskstatus": {
+        "getTaskStatus": {
             "allowed_groups": [
                 "anonymous",
                 "*"
             ]
         },
-        "listentask": {
+        "listenTask": {
             "allowed_groups": [
                 "anonymous",
                 "*"
             ]
         },
-        "preparelogfordownload": {
+        "prepareLogForDownload": {
             "allowed_groups": [
                 "admin",
                 "admins",

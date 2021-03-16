@@ -5,11 +5,6 @@
         "class": "RemoteWebGui"
     },
     "METHODS": {
-        "remote_execute": {
-            "allowed_groups": [
-                "anonymous"
-            ]
-        },
         "create_connection": {
             "allowed_groups": [
                 "anonymous"
@@ -40,7 +35,7 @@
                 "anonymous"
             ]
         },
-        "getxpraconnections": {
+        "getXpraConnections": {
             "allowed_groups": [
                 "anonymous"
             ]

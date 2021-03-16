@@ -12,6 +12,8 @@ import os
 import shutil
 import ntpath
 
+import n4d.responses
+
 class TaskMan():
     '''
     Server Task Manager
@@ -29,12 +31,15 @@ class TaskMan():
     def getWS(self):
         try:
             if(self.port):
-                return {'status':True, 'ws':'ws://127.0.0.1:'+str(self.port)}
+                return n4d.responses.build_successful_call_response({'ws':'ws://127.0.0.1:'+str(self.port)})
+                # return {'status':True, 'ws':'ws://127.0.0.1:'+str(self.port)}
             else:
-                return {'status':False, 'msg':'self.port does not exists'}
+                return n4d.responses.build_failed_call_response(ret_msg='self.port does not exists')
+                # return {'status':False, 'msg':'self.port does not exists'}
             
         except Exception as e:
-                return {'status':False, 'msg':str(e)}
+                return n4d.responses.build_failed_call_response(ret_msg=str(e))
+                # return {'status':False, 'msg':str(e)}
             
     
 
@@ -60,19 +65,23 @@ class TaskMan():
             multicast_thread = threading.Thread(target=self.multicast, args=([newtask]))
             multicast_thread.daemon = True
             multicast_thread.start()
-                        
-            return {"status": True, "msg":str(id)}
+
+            return n4d.responses.build_successful_call_response(str(id))            
+            # return {"status": True, "msg":str(id)}
         except Exception as e:
-            return {"status": False, "msg":str(e)}
+            return n4d.responses.build_failed_call_response(ret_msg=str(e))
+            # return {"status": False, "msg":str(e)}
     
     def getTasks(self):
         '''
         Gets info for all tasks
         '''
         try:
-            return {"status":True, "msg":str(self.tasks)}
+            return n4d.responses.build_successful_call_response(str(self.tasks))
+            # return {"status":True, "msg":str(self.tasks)}
         except Exception as e:
-            return {"status": False, "msg":str(e)}
+            return n4d.responses.build_failed_call_response(ret_msg=str(e))
+            # return {"status": False, "msg":str(e)}
         
     
     def getTask(self, taskid):
@@ -80,18 +89,22 @@ class TaskMan():
         Gets info for current task
         '''
         try:
-            return {"status":True, "msg":self.tasks[taskid].get()}
+            return n4d.responses.build_successful_call_response(self.tasks[taskid].get())
+            # return {"status":True, "msg":self.tasks[taskid].get()}
         except Exception as e:
-            return {"status": False, "msg":str(e)}
+            return n4d.responses.build_failed_call_response(ret_msg=str(e))
+            # return {"status": False, "msg":str(e)}
         
     def getTaskStatus(self, taskid):
         '''
         Gets status for current task
         '''
         try:
-            return {"status":True, "taskStatus":self.tasks[taskid].getStatus()}
+            return n4d.responses.build_successful_call_response({"taskStatus":self.tasks[taskid].getStatus()})
+            # return {"status":True, "taskStatus":self.tasks[taskid].getStatus()}
         except Exception as e:
-            return {"status": False, "msg":str(e)}
+            return n4d.responses.build_failed_call_response(ret_msg=str(e))
+            # return {"status": False, "msg":str(e)}
         
 
     def prepareLogForDownload(self, taskid):
@@ -103,14 +116,17 @@ class TaskMan():
             if not os.path.exists("/tmp/taskslog"):
                 os.makedirs("/tmp/taskslog")
             shutil.copy(pipe, "/tmp/taskslog/")
-            return {"status":True, "file":ntpath.basename(pipe)}
+            return n4d.responses.build_successful_call_response({"file":ntpath.basename(pipe)})
+            # return {"status":True, "file":ntpath.basename(pipe)}
         
         except Exception as e:
-            return {"status": False, "msg":str(e)}
+            return n4d.responses.build_failed_call_response(ret_msg=str(e))
+            # return {"status": False, "msg":str(e)}
 
     def cancelTask(self, taskid):
         print "REMOVING ", str(taskid)
-        return self.tasks[taskid].stop()
+        return n4d.responses.build_successful_call_response(self.tasks[taskid].stop())
+        # return self.tasks[taskid].stop()
 
     def listenTask(self, taskid):
         '''
@@ -119,9 +135,11 @@ class TaskMan():
         try:
             print ("listening for task ", taskid)
             print (self.tasks[taskid].get())
-            #return {"status": True, "msg":self.tasks[taskid].get()}
+            return n4d.responses.build_successful_call_response()
+            # #return {"status": True, "msg":self.tasks[taskid].get()}
         except Exception as e:
-            return {"status": False, "msg":str(e)}        
+            return n4d.responses.build_failed_call_response(ret_msg=str(e))
+            # return {"status": False, "msg":str(e)}        
 
     def multicast(self, task):
         try:
