@@ -410,7 +410,10 @@ Helper space
 
 .divloglineactive{
 	font-weight: bold;
-	animation: pulse 3s infinite;
+	/* animation: pulse 3s infinite; */
+	animation-name: pulse;
+	animation-duration: 3s;
+	animation-iteration-count: 3;
 	width: 100%;
 	color: #ffffff;
 }

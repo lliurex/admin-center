@@ -62,7 +62,7 @@ class TaskMan():
             newtask.runTask()                           # running Task
 
             # Prepare thread (for multicasting, it will reads task log and redirects to websocket)
-            multicast_thread = threading.Thread(target=self.multicast, args=([newtask]))
+            multicast_thread = threading.Thread(target=self.multicast, name="Taskman admin-center thread", args=([newtask]))
             multicast_thread.daemon = True
             multicast_thread.start()
 

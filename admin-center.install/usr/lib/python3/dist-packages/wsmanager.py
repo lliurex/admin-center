@@ -158,7 +158,7 @@ class WSManager:
         port=server.serversocket.getsockname()[1]
         #print port;
         #self.serveforever(server);
-        wsthread = threading.Thread(target=self.serveforever, args=([server]))
+        wsthread = threading.Thread(target=self.serveforever,name="Admin-center websocket server", args=([server]))
         wsthread.daemon = True
         wsthread.start()
         #print ("Create connection to 127.0.0.1:"+str(port))
