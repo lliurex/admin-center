@@ -537,35 +537,40 @@ UtilsClass.prototype.n4d=function n4d(credentials, n4dclass, n4dmethod, arglist,
     // Building credentials
     Utils.crypt.setPublicKey(sessionStorage.serverKey)
     console.log('Calling n4d method '+n4dmethod+' from '+n4dclass+' with params '+JSON.stringify(arglist)+' authenticated as '+JSON.stringify(credentials))
+    let auth = false
     if (! Utils.isCoreFunction(n4dmethod) ){
-        let done = false
-        // if(credentials===null || credentials===""){
-        // 	n4dargs.push("")
-        // 	done = true
-        // }
-        if (typeof(credentials) == "string"){
-            credentials = JSON.parse(credentials)
-        }
-        if (Array.isArray(credentials) && credentials.length == 2){
-            //for (let i=0;i<credentials.length;i++){
-            n4dargs.push(JSON.stringify(credentials))
-            //}
-            done = true
+        if (credentials == null){
+            n4dargs.push("")
+            console.log("n4d call with empty credentials")
+        }else{
+            if (typeof(credentials) == "string"){
+                if (credentials == ""){
+                    n4dargs.push("")
+                    console.log("n4d call with empty credentials")
+                }else{
+                    try{
+                        credentials = JSON.parse(credentials)
+                        auth = true
+                    }catch(err){
+                        console.log("n4d call with plain credentials "+credentials)
+                    }
+                }
+            }else{
+                if (Array.isArray(credentials) && credentials.length == 2){
+                    n4dargs.push(JSON.stringify(credentials))
+                    auth = true
+                }
+            }
         }
         if (n4dclass === null || n4dclass == ""){
             alert('Invalid class for n4d calling '+n4dmethod)
         }else{
             n4dargs.push(n4dclass)
-        }
-        if (done){
-            for (let i=0;i<n4dargs.length;i++){
-                n4dargs[i] = Utils.crypt.encrypt(n4dargs[i])
-            }
-        }else{
-            alert('Invalid credentials for n4d')
         }				
     }
-
+    for (let i=0;i<n4dargs.length;i++){
+        n4dargs[i] = Utils.crypt.encrypt(n4dargs[i])
+    }
     for (let i=0;i<arglist.length;i++){
         n4dargs.push(Utils.crypt.encrypt(arglist[i]));
     }
@@ -580,7 +585,7 @@ UtilsClass.prototype.n4d=function n4d(credentials, n4dclass, n4dmethod, arglist,
             pass: Utils.mycrypt.getPublicKey(),
             timeout: timeout
         },
-        success: function(cryptedb64){
+        success: function(cryptedb64,status,jqXHR){
             try{
                 let t2 = new Date()
                 let returned
@@ -596,14 +601,24 @@ UtilsClass.prototype.n4d=function n4d(credentials, n4dclass, n4dmethod, arglist,
                 returned = returned.trim()
                 $("body").css("cursor", "default")
                 let ret = JSON.parse(returned)
-                console.log('Success call lasting '+(t2-t1)+'ms, n4d method '+n4dmethod+' from '+n4dclass+' with params '+JSON.stringify(arglist)+' authenticated as '+JSON.stringify(credentials)+' returning '+JSON.stringify(ret))
-                callback(ret)
+                if (ret.hasOwnProperty('status') && ret.hasOwnProperty('return')){
+                    console.log('N4d call response is well formed')
+                    if (ret.status){
+                        console.log('Success call lasting '+(t2-t1)+'ms, n4d method '+n4dmethod+' from '+n4dclass+' with params '+JSON.stringify(arglist)+' authenticated as '+JSON.stringify(credentials)+' returning '+JSON.stringify(ret))
+                        console.log('return to callback ')
+                        callback(ret.return)
+                    }else{
+                        console.log('Fail status for response, lasting '+(t2-t1)+'ms, n4d method '+n4dmethod+' from '+n4dclass+' with params '+JSON.stringify(arglist)+' authenticated as '+JSON.stringify(credentials)+' response is: '+JSON.stringify(ret)+' skipping callback')
+                    }
+                }else{
+                    console.log('N4d call response is not well formed, call lasting '+(t2-t1)+'ms, n4d method '+n4dmethod+' from '+n4dclass+' with params '+JSON.stringify(arglist)+' authenticated as '+JSON.stringify(credentials)+' response is: '+JSON.stringify(ret)+' skipping callback ')
+                }
             } catch(err){
                 let t2 = new Date()
-                console.log('Fail call lasting '+(t2-t1)+'ms, n4d method '+n4dmethod+' from '+n4dclass+' with params '+JSON.stringify(arglist)+' authenticated as '+JSON.stringify(credentials)+' error is: '+err)
-                callback("Error!")
+                console.log('Fail call lasting '+(t2-t1)+'ms, n4d method '+n4dmethod+' from '+n4dclass+' with params '+JSON.stringify(arglist)+' authenticated as '+JSON.stringify(credentials)+' error is: '+err+' skipping callback ')
             }
-        },error(){
+        },
+        error: function(jqXHR,status,error){
             let t2 = new Date()
             console.log('Fail call lasting '+(t2-t1)+'ms, n4d method '+n4dmethod+' from '+n4dclass+' with params '+JSON.stringify(arglist)+' authenticated as '+JSON.stringify(credentials))
             $("body").css("cursor", "default")

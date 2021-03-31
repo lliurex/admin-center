@@ -252,8 +252,7 @@ AdminCenter.prototype.addMeToHistory=function addMeToHistory(item){
 	self.history.push($(item).attr("target"));
 	
 	if(self.history.length>10) self.history.shift();
-  console.log('History:')
-	console.log(self.history);
+  console.log('History:'+JSON.stringify(self.history))
 }
 
 AdminCenter.prototype.bindMenus=function bindMenus(){

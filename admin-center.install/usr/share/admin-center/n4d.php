@@ -52,6 +52,7 @@ function n4d($method, $args, $timeout){
     try{
         writeHeader();
         $args = json_decode($args);
+        //error_log("N4d call ".$method." with arguments1:".var_export($args,true));
         for ($i=0;$i<count($args);$i++){
             $tmp1 = n4dRSADecrypt($args[$i]);
             $tmp2 = json_decode($tmp1);
@@ -63,7 +64,7 @@ function n4d($method, $args, $timeout){
         }
         $url='https://127.0.0.1:9779';
 
-        // error_log("N4d call ".$method." with arguments:".var_export($args,true));
+        //error_log("N4d call ".$method." with arguments2:".var_export($args,true));
         
         $request=xmlrpc_encode_request($method, $args);
         //error_log($request);
@@ -89,59 +90,67 @@ function n4d($method, $args, $timeout){
         $data = curl_exec($ch);      
         $request_error = curl_errno($ch);
         curl_close($ch);
+        $msg="";
+        $noerror=true;
+        $xmlobj=array();
         if( $request_error > 0 ){
-            echo(n4dRSAEncrypt(json_encode(array('status'=> False, 'msg' => 'Curl error ' . strval($request_error))))); 
+            $noerror=false;
+            $msg='Curl error '.strval($request_error); 
+            error_log($msg);
         }
-        else{
-            if ( (gettype($ch)!="unknown type") && $request_error ) {
-                $xml_snippet=simplexml_load_string($data);
-                $json=json_encode($xml_snippet);
-                echo (n4dRSAEncrypt($json));
+        if ( (gettype($ch)!="unknown type") && $request_error ) {
+            $xml_snippet=simplexml_load_string($data);
+            $msg=json_encode( $xml_snippet );
+            $noerror=false;
+            error_log($xml_snippet);
+        }
+        if ($noerror){
+            $xmlobj=xmlrpc_decode($data);
+         
+            if (gettype($xmlobj)=="string"){
+                error_log($xmlobj);
+                $msg=$xmlobj;
+                $noerror=false;
+            }
+            if (! array_key_exists("status",$xmlobj)){
+                $msgerr = "Unknown response from n4d server, response without status";
+                $msg .= $msgerr;
+                error_log($msgerr);
+                $noerror=false;
+            }
+            if ($xmlobj['status'] != 0){
+                $msgerr = "N4d call seems failed!";
+                if (array_key_exists('msg',$xmlobj)){
+                    $msgerr .= ",".$xmlobj['msg'];
+                }
+                $msg .= $msgerr;
+                error_log($msgerr);
+                $noerror=false;
             }else{
-                $xmlobj=xmlrpc_decode($data);
-                $msg="";
-                //error_log('xml reply from n4d-server '.var_export($xmlobj,true));
-                if (gettype($xmlobj)=="string"){
-                    error_log($xmlobj);
-                } 
-                if (! array_key_exists("status",$xmlobj)){
-                    $msgerr = "Unknown response from n4d server, response without status";
+                if (! array_key_exists("return",$xmlobj)){
+                    $msgerr = "Unknown response from n4d server, successful request response without return";
                     $msg .= $msgerr;
                     error_log($msgerr);
-                    //throw new Exception($msgerr);
+                    $noerror=false;
                 }
-                if ($xmlobj['status'] != 0){
-                    $msgerr = "N4d call seems failed!";
-                    if (array_key_exists('msg',$xmlobj)){
-                        $msgerr .= ",".$xmlobj['msg'];
-                    }
-                    $msg .= $msgerr;
-                    error_log($msgerr);
-                    //throw new Exception($msgerr);
-                }else{
-                    if (! array_key_exists("return",$xmlobj)){
-                        $msgerr = "Unknown response from n4d server, successful request response without return";
-                        $msg .= $msgerr;
-                        error_log($msgerr);
-                        //throw new Exception($msgerr);
-                    }
-                }
-                if ($msg != ""){
-                    $xmlobj['return'] = $msg;
-                }
-                $json = json_encode($xmlobj['return']);
-                if ($json == ""){
-                    $json = $xmlobj['return'];
-                }
-                # Store in session user groups
-                if ($method=="validate_user"){
-                    $_SESSION['groups']=json_decode($json,true)[1];
-                }
-                $ret = n4dRSAEncrypt($json);
-                //error_log("N4d.PHP returns ".var_export($ret,true));
-                echo $ret;
             }
         }
+        if ($msg != ""){
+            $xmlobj['return'] = $msg;
+        }
+        //error_log('N4d call successful');
+        $json = json_encode(array('status'=>$noerror,'return'=>$xmlobj['return']));
+        if ($json == ""){
+            $json = json_encode(array('status'=>$noerror,'return'=>json_decode($xmlobj['return'])));
+        }
+        # Store in session user groups
+        if ($method=="validate_user"){
+            $_SESSION['groups']=json_decode($json,true)['return'][1];
+        }
+        //error_log("N4d.PHP returns (before crypt) ".var_export($json,true));
+        $ret = n4dRSAEncrypt($json);
+        //error_log("N4d.PHP returns ".var_export($ret,true));
+        echo $ret;
     } catch (Exception $e){
         error_log($e->getMessage());
         echo(n4dRSAEncrypt(json_encode(array('status'=> False, 'msg' => $e->getMessage()))));
