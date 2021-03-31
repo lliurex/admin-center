@@ -1,3 +1,9 @@
+admin-center (0.10.6) focal; urgency=medium
+
+  * Fixes for focal port
+
+ -- M.Angel Juan <m.angel.juan@gmail.com>  Wed, 31 Mar 2021 19:46:22 +0200
+
 admin-center (0.10.5) focal; urgency=medium
 
   * Focal port
