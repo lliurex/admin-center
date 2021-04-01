@@ -572,7 +572,11 @@ UtilsClass.prototype.n4d=function n4d(credentials, n4dclass, n4dmethod, arglist,
         n4dargs[i] = Utils.crypt.encrypt(n4dargs[i])
     }
     for (let i=0;i<arglist.length;i++){
-        n4dargs.push(Utils.crypt.encrypt(arglist[i]));
+        if (typeof(arglist[i]) != "string"){
+            n4dargs.push(Utils.crypt.encrypt(JSON.stringify(arglist[i])));
+        }else{
+            n4dargs.push(Utils.crypt.encrypt(arglist[i]));
+        }
     }
     $("body").css("cursor", "wait");
     $.ajax({

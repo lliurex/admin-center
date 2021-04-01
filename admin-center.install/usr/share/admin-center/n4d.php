@@ -48,11 +48,15 @@ function n4dRSAEncrypt($plain){
 
 $core_functions = array('get_variable','get_variables');
 
+
 function n4d($method, $args, $timeout){
+    $DEBUG=false;
     try{
         writeHeader();
         $args = json_decode($args);
-        //error_log("N4d call ".$method." with arguments1:".var_export($args,true));
+        if ($DEBUG){
+            error_log("N4d call ".$method." with arguments1:".var_export($args,true));
+        }
         for ($i=0;$i<count($args);$i++){
             $tmp1 = n4dRSADecrypt($args[$i]);
             $tmp2 = json_decode($tmp1);
@@ -63,9 +67,9 @@ function n4d($method, $args, $timeout){
             }
         }
         $url='https://127.0.0.1:9779';
-
-        //error_log("N4d call ".$method." with arguments2:".var_export($args,true));
-        
+        if ($DEBUG){
+            error_log("N4d call ".$method." with arguments2:".var_export($args,true));
+        }
         $request=xmlrpc_encode_request($method, $args);
         //error_log($request);
         $header[] = "Content-type: text/xml";
@@ -138,7 +142,9 @@ function n4d($method, $args, $timeout){
         if ($msg != ""){
             $xmlobj['return'] = $msg;
         }
-        //error_log('N4d call successful');
+        if ($DEBUG){
+            error_log('N4d call successful');
+        }
         $json = json_encode(array('status'=>$noerror,'return'=>$xmlobj['return']));
         if ($json == ""){
             $json = json_encode(array('status'=>$noerror,'return'=>json_decode($xmlobj['return'])));
@@ -147,9 +153,13 @@ function n4d($method, $args, $timeout){
         if ($method=="validate_user"){
             $_SESSION['groups']=json_decode($json,true)['return'][1];
         }
-        //error_log("N4d.PHP returns (before crypt) ".var_export($json,true));
+        if ($DEBUG){
+            error_log("N4d.PHP returns (before crypt) ".var_export($json,true));
+        }
         $ret = n4dRSAEncrypt($json);
-        //error_log("N4d.PHP returns ".var_export($ret,true));
+        if ($DEBUG){
+            error_log("N4d.PHP returns ".var_export($ret,true));
+        }
         echo $ret;
     } catch (Exception $e){
         error_log($e->getMessage());
