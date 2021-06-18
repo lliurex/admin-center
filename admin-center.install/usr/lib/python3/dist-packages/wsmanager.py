@@ -52,20 +52,29 @@ class WSLog(WebSocket):
                         ##listener[0].sendMessage(u'{"msg":"'+ base64.b64encode(msg_data["line"])+'", "type":"'+msgtype+'"}')  ## Igual es este el que posava el 127.0.0.1 - davant!!
                         #listener[0].sendMessage(u'{"msg":"'+msg_data["line"]+'", "type":"'+msgtype+'"}')  ## Igual es este el que posava el 127.0.0.1 - davant!!
                         
-                        listener[0].sendMessage(u'{"msg":"'+ base64.b64encode(msg_data["line"])+'", "type":"'+msgtype+'"}')  ## Igual es este el que posava el 127.0.0.1 - davant!!
+                        listener[0].sendMessage(u'{"msg":"'+ self.encodeb64(msg_data["line"])+'", "type":"'+msgtype+'"}')  ## Igual es este el que posava el 127.0.0.1 - davant!!
                         
                         #print "???"
                         #listener[0].sendMessage(u'{"msg":"'+ base64.b64encode(self.data)+'", "type":"'+msgtype+'"}')  ## Igual es este el que posava el 127.0.0.1 - davant!!
                         
                         
                 except Exception as e:
-                    print e
+                    print(e)
                     
                  
                 
                 #listener.sendMessage(self.address[0] + u' - ' + self.data)  ## Igual es este el que posava el 127.0.0.1 - davant!!
                 
         pass
+
+    def encodeb64(self,string):
+        bstring = None
+        if isinstance(string,bytes):
+            bstring = string
+        if isinstance(string,str):
+            bstring = string.encode('utf8')
+        res = base64.b64encode(bstring)
+        return res.decode('utf8')
     
     def handleConnected(self): ## Podriem rebre tambe l'id del treball ??????????????????????
         '''
@@ -77,7 +86,7 @@ class WSLog(WebSocket):
         #print "ADDING NEW LISTENER"
         self.listeners.append([self, job])
         #self.listeners.append(self)
-        self.sendMessage(u'{"msg":"'+base64.b64encode("Listening server...")+'", "type":"text"}');
+        self.sendMessage(u'{"msg":"'+self.encodeb64("Listening server...")+'", "type":"text"}');
         #self.sendMessage(u'{"msg":"Listening server..."}');
             
         '''if (self.address[0]=='127.0.0.1'):
@@ -95,7 +104,7 @@ class WSLog(WebSocket):
     def handleClose(self):
        
        jobid=self.getJobFromRequest(self.headerbuffer.decode("utf-8"));
-       print self.address, 'closed and removed for job: '+str(jobid)
+       print("{} {} {}".format(self.address,'closed and removed for job: ',jobid))
        #self.listeners.remove(self)
        self.listeners.remove([self, job])
        
@@ -146,10 +155,10 @@ class WSManager:
         
         # Prepare Websocket connection
         server = SimpleWebSocketServer('', 0, WSLog)
-        port=server.serversocket._sock.getsockname()[1]
+        port=server.serversocket.getsockname()[1]
         #print port;
         #self.serveforever(server);
-        wsthread = threading.Thread(target=self.serveforever, args=([server]))
+        wsthread = threading.Thread(target=self.serveforever,name="Admin-center websocket server", args=([server]))
         wsthread.daemon = True
         wsthread.start()
         #print ("Create connection to 127.0.0.1:"+str(port))

@@ -117,8 +117,8 @@ class Task:
                 self.status="BROKEN"
 
 
-        print "[TASKMANAGER] END WAIT AT "+str(datetime.datetime.now())
-        print "[TASKMANAGER] FINISHING!!!, return code: "+str(ret)
+        print("[TASKMANAGER] END WAIT AT "+str(datetime.datetime.now()))
+        print("[TASKMANAGER] FINISHING!!!, return code: "+str(ret))
         
         ## Millora: Abans d'enviar que ha acabat que espere a tindre els buffers buits...
         

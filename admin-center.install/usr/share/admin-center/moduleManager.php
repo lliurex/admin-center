@@ -8,7 +8,15 @@ switch ($action) {
     getModuleInfo($_POST["module"]);
     break;
   case 'getModuleLayout':
-    getModuleLayout($_POST["id"], $_POST["filename"], $_POST["help"], $_POST["iscomponentof"], $_POST["banner"]);
+    $params = array();
+    foreach (array("id","filename","help","iscomponentof","banner") as $key){
+      if (array_key_exists($key,$_POST)){
+        array_push($params,$_POST[$key]);
+      }else{
+        array_push($params,null);
+      }
+    }
+    getModuleLayout(...$params);
     break;
 
   case 'getModuleList':
@@ -40,19 +48,24 @@ function getModuleInfo($module){
   $moduleInfo['info']=$_SESSION['modules'][$module];
 
   // Reading css files list
-  $styles=array_diff(scandir("modules/$module/src/css"), array('..', '.'));
-
-
-  foreach ($styles as $key=>$value)
-    $styles[$key]="modules/$module/src/css/$value";
-
+  $styles_tmp=array_diff(scandir("modules/$module/src/css"), array('..', '.'));
+  $styles = array();
+  foreach ($styles_tmp as $key=>$value){
+    $ext=pathinfo($value,PATHINFO_EXTENSION);
+    if (strtolower($ext) == "css"){
+        $styles[$key]="modules/$module/src/css/$value";
+    }
+  }
   $moduleInfo['styles']=$styles;
-
   // Reading js files list
-  $scripts=array_diff(scandir("modules/$module/src/js"), array('..', '.'));
-  foreach ($scripts as $key=>$value)
-    $scripts[$key]="modules/$module/src/js/$value";
-
+  $scripts_tmp=array_diff(scandir("modules/$module/src/js"), array('..', '.'));
+  $scripts = array();
+  foreach ($scripts_tmp as $key=>$value){
+    $ext=pathinfo($value,PATHINFO_EXTENSION);
+    if (strtolower($ext) == "js"){
+	$scripts[$key]="modules/$module/src/js/$value";
+    }
+  }
   $moduleInfo['scripts']=$scripts;
 
   echo(json_encode($moduleInfo));

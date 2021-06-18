@@ -1,0 +1,60 @@
+{
+    "SETUP": {
+        "type": "python",
+        "path": "TaskMan.py",
+        "class": "TaskMan"
+    },
+    "METHODS": {
+        "newTask": {
+            "allowed_groups": [
+                "admin",
+                "admins",
+                "sudo"
+            ]
+        },
+        "cancelTask": {
+            "allowed_groups": [
+                "admin",
+                "admins",
+                "sudo"
+            ]
+        },
+        "getWS": {
+            "allowed_groups": [
+                "anonymous",
+                "*"
+            ]
+        },
+        "getTasks": {
+            "allowed_groups": [
+                "anonymous",
+                "*"
+            ]
+        },
+        "getTask": {
+            "allowed_groups": [
+                "anonymous",
+                "*"
+            ]
+        },
+        "getTaskStatus": {
+            "allowed_groups": [
+                "anonymous",
+                "*"
+            ]
+        },
+        "listenTask": {
+            "allowed_groups": [
+                "anonymous",
+                "*"
+            ]
+        },
+        "prepareLogForDownload": {
+            "allowed_groups": [
+                "admin",
+                "admins",
+                "sudo"
+            ]
+        }
+    }
+}

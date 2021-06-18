@@ -1,7 +1,7 @@
 <html>
 <head>
 	<title>Admin Center</title>
-     <link rel="icon" href="icons/default.png">
+     <link rel="icon" href="icones/default.png">
 	<link rel="stylesheet" href="lib/bootstrap/css/bootstrap.min.css">
 	
 	<!--link rel="stylesheet" href="lib/bootstrap-design/css/material.min.css"-->

@@ -25,33 +25,34 @@ AdminCenter.prototype.checkVariableExists = function checkVariableExists(variabl
 AdminCenter.prototype.getServerInfo = function getServerInfo(){
   var self=this;
   credentials=null;
-  n4dclass='VariablesManager';
+  //n4dclass='VariablesManager';
+  n4dclass=null;
   n4dmethod='get_variables';
   arglist="";
   Utils.n4d(credentials, n4dclass, n4dmethod, arglist, function(args){
 
     var ServerConfig=args;
     self.ServerConfig=ServerConfig;
-    if ( self.checkVariableExists(ServerConfig,['SRV_IP','value']) ) $("#serverInfo_SRV_IP").html(ServerConfig["SRV_IP"]["value"]);
-    if ( self.checkVariableExists(ServerConfig,['HOSTNAME','value']) ) $("#serverInfo_HOSTNAME").html(ServerConfig["HOSTNAME"]["value"]);
-    if ( self.checkVariableExists(ServerConfig,['INTERNAL_DOMAIN','value']) )$("#serverInfo_INTERNAL_DOMAIN").html(ServerConfig["INTERNAL_DOMAIN"]["value"]);
-    if ( self.checkVariableExists(ServerConfig,['INTERNAL_INTERFACE','value']) ) $("#serverInfo_INTERNAL_INTERFACE").html(ServerConfig["INTERNAL_INTERFACE"]["value"]);
-    if ( self.checkVariableExists(ServerConfig,['EXTERNAL_INTERFACE','value']) ) $("#serverInfo_EXTERNAL_INTERFACE").html(ServerConfig["EXTERNAL_INTERFACE"]["value"]);
-    if ( self.checkVariableExists(ServerConfig,['INTERNAL_MASK','value']) ) $("#serverInfo_INTERNAL_MASK").html(ServerConfig["INTERNAL_MASK"]["value"]);
-    if ( self.checkVariableExists(ServerConfig,['INTERNAL_NETWORK','value']) ) $("#serverInfo_INTERNAL_NETWORK").html(ServerConfig["INTERNAL_NETWORK"]["value"]);
-    if ( self.checkVariableExists(ServerConfig,['DNS_EXTERNAL','value',0]) ) { $("#serverInfo_DNS1").html(ServerConfig["DNS_EXTERNAL"]["value"][0]);} 
-    if ( self.checkVariableExists(ServerConfig,['DNS_EXTERNAL','value',1]) ) { $("#serverInfo_DNS2").html(ServerConfig["DNS_EXTERNAL"]["value"][1]);}
+    if ( self.checkVariableExists(ServerConfig,['SRV_IP']) ) $("#serverInfo_SRV_IP").html(ServerConfig["SRV_IP"]);
+    if ( self.checkVariableExists(ServerConfig,['HOSTNAME']) ) $("#serverInfo_HOSTNAME").html(ServerConfig["HOSTNAME"]);
+    if ( self.checkVariableExists(ServerConfig,['INTERNAL_DOMAIN']) )$("#serverInfo_INTERNAL_DOMAIN").html(ServerConfig["INTERNAL_DOMAIN"]);
+    if ( self.checkVariableExists(ServerConfig,['INTERNAL_INTERFACE']) ) $("#serverInfo_INTERNAL_INTERFACE").html(ServerConfig["INTERNAL_INTERFACE"]);
+    if ( self.checkVariableExists(ServerConfig,['EXTERNAL_INTERFACE']) ) $("#serverInfo_EXTERNAL_INTERFACE").html(ServerConfig["EXTERNAL_INTERFACE"]);
+    if ( self.checkVariableExists(ServerConfig,['INTERNAL_MASK']) ) $("#serverInfo_INTERNAL_MASK").html(ServerConfig["INTERNAL_MASK"]);
+    if ( self.checkVariableExists(ServerConfig,['INTERNAL_NETWORK']) ) $("#serverInfo_INTERNAL_NETWORK").html(ServerConfig["INTERNAL_NETWORK"]);
+    if ( self.checkVariableExists(ServerConfig,['DNS_EXTERNAL',0]) ) { $("#serverInfo_DNS1").html(ServerConfig["DNS_EXTERNAL"][0]);} 
+    if ( self.checkVariableExists(ServerConfig,['DNS_EXTERNAL',1]) ) { $("#serverInfo_DNS2").html(ServerConfig["DNS_EXTERNAL"][1]);}
 
-    if ( self.checkVariableExists(ServerConfig,['DHCP_ENABLE','value']) ) $("#serverInfo_DHCP_ENABLE").html(ServerConfig["DHCP_ENABLE"]["value"]);
-    if ( self.checkVariableExists(ServerConfig,['DHCP_FIRST_IP','value']) & self.checkVariableExists(ServerConfig,['DHCP_LAST_IP','value'])  ) $("#serverInfo_IP_RANGE").html(ServerConfig["DHCP_FIRST_IP"]["value"]+"<br/>"+ServerConfig["DHCP_LAST_IP"]["value"]);
-    if ( self.checkVariableExists(ServerConfig,['DHCP_HOST_MAX','value']) ) $("#serverInfo_DHCP_HOST_MAX").html(ServerConfig["DHCP_HOST_MAX"]["value"]);
+    if ( self.checkVariableExists(ServerConfig,['DHCP_ENABLE']) ) $("#serverInfo_DHCP_ENABLE").html(ServerConfig["DHCP_ENABLE"]);
+    if ( self.checkVariableExists(ServerConfig,['DHCP_FIRST_IP']) & self.checkVariableExists(ServerConfig,['DHCP_LAST_IP'])  ) $("#serverInfo_IP_RANGE").html(ServerConfig["DHCP_FIRST_IP"]+"<br/>"+ServerConfig["DHCP_LAST_IP"]);
+    if ( self.checkVariableExists(ServerConfig,['DHCP_HOST_MAX']) ) $("#serverInfo_DHCP_HOST_MAX").html(ServerConfig["DHCP_HOST_MAX"]);
 
-    if ( self.checkVariableExists(ServerConfig,['LLIUREXMIRROR','value','llx16','last_mirror_date']) ) $("#serverInfo_LAST_MIRROR_DATE").html(ServerConfig["LLIUREXMIRROR"]["value"]["llx16"]["last_mirror_date"]);
-    if ( self.checkVariableExists(ServerConfig,['LLIUREXMIRROR','value','llx16','mirror_size']) ) $("#serverInfo_MIRROR_SIZE").html(ServerConfig["LLIUREXMIRROR"]["value"]["llx16"]["mirror_size"]);
+    if ( self.checkVariableExists(ServerConfig,['LLIUREXMIRROR','llx21','last_mirror_date']) ) $("#serverInfo_LAST_MIRROR_DATE").html(ServerConfig["LLIUREXMIRROR"]["llx21"]["last_mirror_date"]);
+    if ( self.checkVariableExists(ServerConfig,['LLIUREXMIRROR','llx21','mirror_size']) ) $("#serverInfo_MIRROR_SIZE").html(Number.parseFloat(ServerConfig["LLIUREXMIRROR"]["llx21"]["mirror_size"]).toFixed(2));
 
-    if ( self.checkVariableExists(ServerConfig,['PROXY_ENABLED','value']) ) $("#serverInfo_PROXY_ENABLED").html(ServerConfig["PROXY_ENABLED"]["value"]);
-    if ( self.checkVariableExists(ServerConfig,['PROXY_HOST','value']) ) $("#serverInfo_PROXY_HOST").html(ServerConfig["PROXY_HOST"]["value"]);
-    if ( self.checkVariableExists(ServerConfig,['PROXY_HTTP_PORT','value']) ) $("#serverInfo_PROXY_HTTPORT").html(ServerConfig["PROXY_HTTP_PORT"]["value"]);
+    if ( self.checkVariableExists(ServerConfig,['PROXY_ENABLED']) ) $("#serverInfo_PROXY_ENABLED").html(ServerConfig["PROXY_ENABLED"]);
+    if ( self.checkVariableExists(ServerConfig,['PROXY_HOST']) ) $("#serverInfo_PROXY_HOST").html(ServerConfig["PROXY_HOST"]);
+    if ( self.checkVariableExists(ServerConfig,['PROXY_HTTP_PORT']) ) $("#serverInfo_PROXY_HTTPORT").html(ServerConfig["PROXY_HTTP_PORT"]);
 
   });
 
@@ -251,7 +252,7 @@ AdminCenter.prototype.addMeToHistory=function addMeToHistory(item){
 	self.history.push($(item).attr("target"));
 	
 	if(self.history.length>10) self.history.shift();
-	console.log(self.history);
+  console.log('History:'+JSON.stringify(self.history))
 }
 
 AdminCenter.prototype.bindMenus=function bindMenus(){

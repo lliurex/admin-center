@@ -118,8 +118,8 @@ function readComponents($modules){
 
   foreach($modules as $moduleName){
     $moduleManifestString = file_get_contents("modules/".$moduleName."/module.json");
-    $module=(json_decode($moduleManifestString, TRUE));
-    
+    $module = json_decode($moduleManifestString, true);
+
     # If user is admin, let's add module
     if ((in_array("sudo", $_SESSION['groups']) or in_array("admins", $_SESSION['groups'])) or ($module["roles"]=="teachers"))
       $modulefilelist[$moduleName]=$module;
@@ -201,7 +201,7 @@ function WriteMenu($modules){
                     $module=$key;
                       //error_log($value["icon"]);
                       if (array_key_exists("icon", $value) && file_exists("modules/$module/src/icons/".$value["icon"]))  $icon="modules/$module/src/icons/".$value["icon"];
-                      else $icon="icons/default.png";
+                      else $icon="icones/default.png";
 
                       
                       echo ("<li><a class='menuitem' target='$module' title='".$value["description"]."'>".
@@ -209,12 +209,12 @@ function WriteMenu($modules){
                       "</span>".$value["name"]."</a>");
 
 
-                        if (count($value["components"]>0)){
+                        if (in_array('components',$value) && is_array($value['components']) && count($value["components"]>0)){
                           echo ('<ul class="nav-pills nav-stacked" style="list-style-type:none; margin-left: -40px;">');
                           foreach($value["components"] as $component){
 
                             if (array_key_exists("icon", $component) && file_exists("modules/$module/src/icons/".$component["icon"]))  $icon="modules/$module/src/icons/".$component["icon"];
-                            else $icon="icons/default.png";
+                            else $icon="icones/default.png";
 
                             echo('<li><a class="menuitem submenuitem" module="'.$module.
                             '" target="'.$component['id'].'"><span class="fa-stack fa-lg pull-left">
