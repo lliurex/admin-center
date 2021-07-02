@@ -209,7 +209,7 @@ function WriteMenu($modules){
                       "</span>".$value["name"]."</a>");
 
 
-                        if (in_array('components',$value) && is_array($value['components']) && count($value["components"]>0)){
+                        if (count($value["components"]>0)){
                           echo ('<ul class="nav-pills nav-stacked" style="list-style-type:none; margin-left: -40px;">');
                           foreach($value["components"] as $component){
 
