@@ -1,0 +1,41 @@
+Source: admin-center
+Section: admin
+Priority: extra
+Maintainer: LliureX Team <lliurex@lliurex.net>
+Build-Depends: debhelper (>= 8.0.0), dh-python, python3-all
+Standards-Version: 3.9.7
+Homepage: http://www.lliurex.net
+#Vcs-Git: git://git.debian.org/collab-maint/lliurex-guard.git
+#Vcs-Browser: http://git.debian.org/?p=collab-maint/lliurex-guard.git;a=summary
+
+Package: admin-center
+Architecture: all
+Depends: ${misc:Depends}, php7.4-common, libapache2-mod-php7.4, php7.4-cli, php7.4-curl, php7.4-xmlrpc, python3-simplewebsocketserver, python3-websocket, websockify, python3-plumbum, python3-psutil, systemd-container, novnc
+Description: Web Administration Center
+ This interface allows to configure n4d serives
+ on LliureX Server via web.
+ 
+Package: python3-simplewebsocketserver
+Architecture: all
+Depends: ${misc:Depends}, ${python:Depends}
+Description: A Simple Websocket Server written in Python
+ ## A Simple Websocket Server written in Python
+ .
+ - RFC 6455 (All latest browsers)
+ - TLS/SSL out of the box
+ - Passes Autobahns Websocket Testsuite
+ - Support for Python 2 and 3
+ .
+ #### Installation
+ .
+ You can install SimpleWebSocketServer by running the following command...
+ .
+ `sudo pip install git+https://github.com/dpallot/simple-websocket-server.git`
+ .
+ Or by downloading the repository and running `sudo python setup.py install`.  
+ Installation via pip is suggested.
+ .
+ #### Echo Server Example
+ `````python
+ from SimpleWebSocketServer import SimpleWebSocketServer, WebSocket
+ .

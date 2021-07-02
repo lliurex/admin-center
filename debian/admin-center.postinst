@@ -1,0 +1,68 @@
+#!/bin/sh
+# postinst script for admin-center
+#
+# see: dh_installdeb(1)
+
+set -e
+
+LINK_NAME="/var/www/admin-center"
+APP_NAME="/usr/share/admin-center"
+# LOGS_DIR="/run/taskmanager"
+N4D_CERT_PATH="/etc/n4d/cert/n4dcert.pem"
+N4D_CERT_LINK="${APP_NAME}/n4dcert.pem"
+CONFIG_PATH="/etc/admin-center"
+
+
+case "$1" in
+    configure)
+
+	[ -d ${CONFIG_PATH} ] || mkdir ${CONFIG_PATH}
+
+	# Generating keys
+	if [ ! -e ${CONFIG_PATH}/private_key.pem ]; then 
+		openssl genrsa -out ${CONFIG_PATH}/private_key.pem 2048
+		openssl rsa -in ${CONFIG_PATH}/private_key.pem -out ${CONFIG_PATH}/public_key.pem -outform PEM -pubout
+		chmod 666 ${CONFIG_PATH}/private_key.pem ${CONFIG_PATH}/public_key.pem
+	fi
+
+	# Generating links
+
+	[ -L ${LINK_NAME} ] || ln -s  ${APP_NAME} ${LINK_NAME}
+	[ -L ${N4D_CERT_LINK} ] || ln -s ${N4D_CERT_PATH} ${N4D_CERT_LINK}
+        # [ -L ${APP_NAME}/logs ] || ln -s ${LOGS_DIR} ${APP_NAME}/logs || true
+	[ -L ${APP_NAME}/public_key.pem ] || ln -s ${CONFIG_PATH}/public_key.pem ${APP_NAME}/public_key.pem || true
+
+        # Creating link for index.php to main.php
+	[ -L ${LINK_NAME}/index.php ] || ln -s  ${LINK_NAME}/main.php ${LINK_NAME}/index.php
+	
+	
+    # Creating link for icones to icons (ti avoid Forbidden Permissions to icons)
+    [ -L ${LINK_NAME}/icones ] || ln -s  ${LINK_NAME}/icons ${LINK_NAME}/icones
+    
+	if [ -e /usr/share/apache2/apache2-maintscript-helper ] ; then
+		. /usr/share/apache2/apache2-maintscript-helper
+		apache2_invoke ensite admin-center || true
+		invoke-rc.d apache2 reload || true
+	fi
+
+	n4d-modules enable-plugin /etc/n4d/conf.d/RemoteWebGui.json || true
+	n4d-modules enable-plugin /etc/n4d/conf.d/TaskMan.json || true
+
+	#Changes permissions to admin-center link json file
+	chown www-data:www-data /var/lib/lliurex-www/links/admin-center.json || true
+
+    ;;
+
+    abort-upgrade|abort-remove|abort-deconfigure)
+	rm ${LINK_NAME}
+    ;;
+
+    *)
+        echo "postinst called with unknown argument \`$1'" >&2
+        exit 1
+    ;;
+esac
+
+#DEBHELPER#
+
+exit 0
