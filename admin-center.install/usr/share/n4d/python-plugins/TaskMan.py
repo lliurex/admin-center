@@ -31,7 +31,7 @@ class TaskMan():
     def getWS(self):
         try:
             if(self.port):
-                return n4d.responses.build_successful_call_response({'ws':'ws://127.0.0.1:'+str(self.port)})
+                return n4d.responses.build_successful_call_response({"status":True,'ws':'ws://127.0.0.1:'+str(self.port)})
                 # return {'status':True, 'ws':'ws://127.0.0.1:'+str(self.port)}
             else:
                 return n4d.responses.build_failed_call_response(ret_msg='self.port does not exists')
