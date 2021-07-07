@@ -1,4 +1,18 @@
+admin-center (0.10.9) focal; urgency=medium
+
+  * Bump version to 0.10.9 to avoid conflict with previous build not commited
+
+ -- M.Angel Juan <m.angel.juan@gmail.com>  Wed, 07 Jul 2021 20:06:03 +0200
+
 admin-center (0.10.8) focal; urgency=medium
+
+  * Fix translations
+  * Fix ltsp cancel task
+  * Fix component count errors shown
+
+ -- M.Angel Juan <m.angel.juan@gmail.com>  Wed, 07 Jul 2021 19:21:27 +0200
+
+admin-center (0.10.7.5) focal; urgency=medium
 
   * Partial migration to new n4d
 

@@ -3,7 +3,7 @@ function I18n(){
   this.locale = navigator.language || navigator.userLanguage;
   
   // if lang is ca, transform to ca_ES@valencia
-  if (this.locale==="ca" || this.locale==="ca-valencia") this.locale="ca-ES@valencia";
+  if (this.locale==="ca" || this.locale==="ca-valencia" || this.locale==="ca-ES") this.locale="ca-ES@valencia";
   else if (this.locale==="es" || this.locale==="es-ES") this.locale="es-ES";
   else if (this.locale==="en") this.locale="en-US";
   

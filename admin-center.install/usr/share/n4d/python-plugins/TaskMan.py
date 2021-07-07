@@ -61,7 +61,7 @@ class TaskMan():
             
             # If there is not any task running, let's continue
             
-            id = int(round(time.time()*10))               # generating new id from sys time
+            id = int(round(time.time()*10))%32000               # generating new id from sys time
             newtask = Task(id, command, cancelCommand)    # Create new task object (frow library actasks)            
             self.tasks[str(id)] = newtask                 # Adding to task dictionary            
             newtask.runTask()                           # running Task
@@ -130,6 +130,8 @@ class TaskMan():
 
     def cancelTask(self, taskid):
         print("REMOVING {}".format(str(taskid)))
+        if not isinstance(taskid,str):
+            taskid=str(taskid)
         return n4d.responses.build_successful_call_response(self.tasks[taskid].stop())
         # return self.tasks[taskid].stop()
 
