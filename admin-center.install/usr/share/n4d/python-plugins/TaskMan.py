@@ -130,6 +130,8 @@ class TaskMan():
 
     def cancelTask(self, taskid):
         print("REMOVING {}".format(str(taskid)))
+        if not isinstance(taskid,str):
+            taskid=str(taskid)
         return n4d.responses.build_successful_call_response(self.tasks[taskid].stop())
         # return self.tasks[taskid].stop()
 
