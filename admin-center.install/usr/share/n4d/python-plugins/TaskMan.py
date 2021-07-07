@@ -14,6 +14,7 @@ import ntpath
 
 import n4d.responses
 
+
 class TaskMan():
     '''
     Server Task Manager
@@ -21,6 +22,10 @@ class TaskMan():
     Manages all tasks in server and its communication via web sockets
     
     '''
+
+    ERROR_SERVER_BUSY = -50
+
+
     def __init__(self):
         self.tasks={}                              # Task Dictionary
         self.wsManager=WSManager()                 # Websocket manager (server)
@@ -50,9 +55,9 @@ class TaskMan():
         try:
             # Checking if there is any task running            
             for task in self.tasks:
-                status=self.getTaskStatus(task)["taskStatus"]
+                status=self.getTaskStatus(task)["result"]["taskStatus"]
                 if status=="RUNNING":
-                    return {"status": False, "msg":"SERVER_BUSY"}
+                    return n4d.responses.build_failed_call_response(TaskMan.ERROR_SERVER_BUSY)
             
             # If there is not any task running, let's continue
             
