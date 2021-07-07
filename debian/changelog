@@ -1,3 +1,11 @@
+admin-center (0.10.8) focal; urgency=medium
+
+  * Fix translations
+  * Fix ltsp cancel task
+  * Fix component count errors shown
+
+ -- M.Angel Juan <m.angel.juan@gmail.com>  Wed, 07 Jul 2021 19:21:27 +0200
+
 admin-center (0.10.7) focal; urgency=medium
 
   * Fix argument types
