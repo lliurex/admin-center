@@ -164,18 +164,10 @@ class RemoteWebGui:
 	#def run_into_connection
 
 	def run_into_connection_vnc(self, command, port):
-		self._debug("Sleeping... {}\n".format(port))
-		#There's a race condition and sometimes DISPLAY is not set... wait a moment for it
-		sleep(7)
-		self._debug("Wake up...\n")
-		#cmd='export DISPLAY='+display+";"+command
 		cmd = "/usr/bin/websockify --web /usr/share/novnc {} localhost:5901".format(port)
-		self._debug(cmd)
 		try:
-			#//p=subprocess.call([cmd], shell=True)
 			p=subprocess.Popen([cmd], shell=True)
 			self.websockify = p
-			sleep(3)
 		except Exception as e:
 			print("Run_into_connection: %s"%e)
 			p=-1
