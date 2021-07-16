@@ -24,6 +24,7 @@
       <tr><td class="ServerInfo_Param" i18n>Internal Network</td> <td id="serverInfo_INTERNAL_NETWORK"></td></tr>
       <tr><td class="ServerInfo_Param" i18n>Primary DNS Server</td> <td id="serverInfo_DNS1"></td></tr>
       <tr><td class="ServerInfo_Param" i18n>Secondary DNS Server</td> <td id="serverInfo_DNS2"></td></tr>
+      <tr><td class="ServerInfo_Param" i18n>Timestamp</td> <td id="serverInfo_LLIUREX_VERSION"></td></tr>
     </table>
   </div>
 </div>
