@@ -56,6 +56,14 @@ AdminCenter.prototype.getServerInfo = function getServerInfo(){
 
   });
 
+  n4dclass="LliurexVersion";
+  n4dmethod='lliurex_version';
+  arglist="";
+  Utils.n4d(credentials, n4dclass, n4dmethod, arglist, function(args){
+
+    $("#serverInfo_LLIUREX_VERSION").html(args);
+
+  });
 }
 
 
