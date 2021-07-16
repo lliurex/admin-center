@@ -102,7 +102,7 @@ class RemoteWebGui:
 					p=p.strip()
 					retry=0
 				except Exception as e:
-					time.sleep(1)
+					sleep(1)
 					retry-=1
 					pass
 			self.tiger=int(p)
@@ -131,9 +131,9 @@ class RemoteWebGui:
 			import os
 			try:
 				os.kill(self.tiger,15)
-				time.sleep(1)
+				sleep(1)
 				os.kill(self.websockify.pid,15)
-				time.sleep(1)
+				sleep(1)
 				os.system('machinectl kill {}'.format(self.machineid))
 				os.system('machinectl kill {}'.format(self.machineid))
 				os.system('machinectl kill {}'.format(self.machineid))
@@ -149,7 +149,7 @@ class RemoteWebGui:
 	def run_into_connection(self, command, display):
 		self._debug("Sleeping...\n")
 		#There's a race condition and sometimes DISPLAY is not set... wait a moment for it
-		time.sleep(7)
+		sleep(7)
 		self._debug("Wake up...\n")
 		cmd='export DISPLAY='+display+";"+command
 		self._debug(cmd)
@@ -166,7 +166,7 @@ class RemoteWebGui:
 	def run_into_connection_vnc(self, command, port):
 		self._debug("Sleeping... {}\n".format(port))
 		#There's a race condition and sometimes DISPLAY is not set... wait a moment for it
-		time.sleep(7)
+		sleep(7)
 		self._debug("Wake up...\n")
 		#cmd='export DISPLAY='+display+";"+command
 		cmd = "/usr/bin/websockify --web /usr/share/novnc {} localhost:5901".format(port)
@@ -175,7 +175,7 @@ class RemoteWebGui:
 			#//p=subprocess.call([cmd], shell=True)
 			p=subprocess.Popen([cmd], shell=True)
 			self.websockify = p
-			time.sleep(3	)
+			sleep(3)
 		except Exception as e:
 			print("Run_into_connection: %s"%e)
 			p=-1
