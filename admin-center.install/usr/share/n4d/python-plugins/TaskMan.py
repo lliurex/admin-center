@@ -55,7 +55,7 @@ class TaskMan():
         try:
             # Checking if there is any task running            
             for task in self.tasks:
-                status=self.getTaskStatus(task)["result"]["taskStatus"]
+                status=self.getTaskStatus(task)["return"]["taskStatus"]
                 if status=="RUNNING":
                     return n4d.responses.build_failed_call_response(TaskMan.ERROR_SERVER_BUSY)
             
