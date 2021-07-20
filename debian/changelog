@@ -1,3 +1,9 @@
+admin-center (0.10.11) focal; urgency=medium
+
+  * Make server distribute admin-center public_key.pem certificate
+
+ -- M.Angel Juan <m.angel.juan@gmail.com>  Tue, 20 Jul 2021 13:26:17 +0200
+
 admin-center (0.10.10) focal; urgency=medium
 
   * Fix bug with library time
