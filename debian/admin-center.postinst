@@ -10,6 +10,7 @@ APP_NAME="/usr/share/admin-center"
 # LOGS_DIR="/run/taskmanager"
 N4D_CERT_PATH="/etc/n4d/cert/n4dcert.pem"
 N4D_CERT_LINK="${APP_NAME}/n4dcert.pem"
+VHOST_SERVER_ROOT="/var/www"
 CONFIG_PATH="/etc/admin-center"
 
 
@@ -31,6 +32,7 @@ case "$1" in
 	[ -L ${N4D_CERT_LINK} ] || ln -s ${N4D_CERT_PATH} ${N4D_CERT_LINK}
         # [ -L ${APP_NAME}/logs ] || ln -s ${LOGS_DIR} ${APP_NAME}/logs || true
 	[ -L ${APP_NAME}/public_key.pem ] || ln -s ${CONFIG_PATH}/public_key.pem ${APP_NAME}/public_key.pem || true
+	[ -L ${VHOST_SERVER_ROOT}/public_key.pem ] || ln -s ${CONFIG_PATH}/public_key.pem ${VHOST_SERVER_ROOT}/public_key.pem || true
 
         # Creating link for index.php to main.php
 	[ -L ${LINK_NAME}/index.php ] || ln -s  ${LINK_NAME}/main.php ${LINK_NAME}/index.php
