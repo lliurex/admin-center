@@ -171,7 +171,7 @@ class RemoteWebGui:
 		except Exception as e:
 			print("Run_into_connection: %s"%e)
 			p=-1
-		return n4d.responses.build_successful_call_response(p)
+		return n4d.responses.build_successful_call_response(True)
 		# return p
 	#def run_into_connection
 
