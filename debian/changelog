@@ -1,3 +1,9 @@
+admin-center (0.10.13) focal; urgency=medium
+
+  * Fix bug with return value
+
+ -- Raul Rodrigo Segura <raurodse@gmail.com>  Wed, 21 Jul 2021 19:36:09 +0200
+
 admin-center (0.10.12) focal; urgency=medium
 
   * Fix bug with return n4d response
