@@ -98,7 +98,7 @@ class RemoteWebGui:
 			self._debug("PORT: %s DISPLAY: %s"%(port,id))
 			chroot = "/opt/ltsp/{}".format(id)
 			self.machineid=id
-            self.nspawn = subprocess.Popen("/usr/bin/systemd-nspawn -E XDG_CONFIG_DIRS=/home/root/.config/kdedefaults:/etc/xdg/lliurex/classroom:/etc/xdg/lliurex/layouts/current:/etc/xdg/lliurex/desktop:/etc/xdg/xdg-plasma:/etc/xdg -E SHELL=/bin/bash -E LANG=es_ES.utf8 --private-users=0 --private-users-chown -M {} -D{} tigervncserver -SecurityTypes None -depth 24 -geometry 1024x768 -fg -xstartup {}".format(id,chroot,startup),shell=True)
+			self.nspawn = subprocess.Popen("/usr/bin/systemd-nspawn -E XDG_CONFIG_DIRS=/home/root/.config/kdedefaults:/etc/xdg/lliurex/classroom:/etc/xdg/lliurex/layouts/current:/etc/xdg/lliurex/desktop:/etc/xdg/xdg-plasma:/etc/xdg -E SHELL=/bin/bash -E LANG=es_ES.utf8 --private-users=0 --private-users-chown -M {} -D{} tigervncserver -SecurityTypes None -depth 24 -geometry 1024x768 -fg -xstartup {}".format(id,chroot,startup),shell=True)
 			retry = 3
 			while retry>0:
 				try:
