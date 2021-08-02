@@ -1,3 +1,9 @@
+admin-center (0.11) focal; urgency=medium
+
+  * Add lliurex-up and synaptic to edit images
+
+ -- Raul Rodrigo Segura <raurodse@gmail.com>  Mon, 02 Aug 2021 10:39:40 +0200
+
 admin-center (0.10.4) bionic-updates; urgency=medium
 
   * Edit ltsp images graphically with vnc
