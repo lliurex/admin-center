@@ -1,0 +1,418 @@
+admin-center (0.10.4) bionic-updates; urgency=medium
+
+  * Edit ltsp images graphically with vnc
+
+ -- M.Angel Juan <m.angel.juan@gmail.com>  Tue, 02 Mar 2021 12:07:36 +0100
+
+admin-center (0.10.3.4) bionic; urgency=medium
+
+  * Changed the permissions of the link json file to www-data
+  
+ -- Juan Ramon Pelegrina <juapesai@hotmail.com>  Wed, 15 Jul 2020 12:14:19 +0200
+
+admin-center (0.10.3.3) bionic; urgency=medium
+
+  * Updated site to new server page
+  
+ -- Juan Ramon Pelegrina <juapesai@hotmail.com>  Tue, 14 Jul 2020 11:39:02 +0200
+
+admin-center (0.10.3.2) bionic; urgency=medium
+
+  * Add missing python-psutil dependency
+
+ -- M.Angel Juan <m.angel.juan@gmail.com>  Tue, 02 Jun 2020 13:38:51 +0200
+
+admin-center (0.10.3.1) bionic; urgency=medium
+
+  * fix menu imgs
+
+ -- Juanma Navarro Mañez <juanma1980@gmail.com>  Tue, 23 Jul 2019 13:29:58 +0200
+
+admin-center (0.10.3) bionic; urgency=medium
+
+  * Update js libs
+
+ -- Juanma Navarro Mañez <juanma1980@gmail.com>  Tue, 23 Jul 2019 13:12:09 +0200
+
+admin-center (0.10.2) bionic; urgency=medium
+
+  * Theme fixes
+
+ -- Juanma Navarro Mañez <juanma1980@gmail.com>  Tue, 23 Jul 2019 11:43:31 +0200
+
+admin-center (0.10.1) bionic; urgency=medium
+
+  * Removed icones folder
+
+ -- Juanma Navarro Mañez <juanma1980@gmail.com>  Tue, 16 Jul 2019 14:38:16 +0200
+
+admin-center (0.10) bionic; urgency=medium
+
+  * getXpraConnections ported to native python
+  * Add sleep to prevent race condition between display is available and desktop is launched
+  * Many minor improvements
+
+ -- Juanma Navarro Mañez <juanma1980@gmail.com>  Wed, 10 Jul 2019 14:06:05 +0200
+
+admin-center (0.9) bionic; urgency=medium
+
+  * Disable function getXpraConnections at RemoteWebGui
+  * Close open pipe at actasks
+
+ -- Juanma Navarro Mañez <juanma1980@gmail.com>  Fri, 05 Jul 2019 09:01:34 +0200
+
+admin-center (0.8.2) bionic; urgency=medium
+
+  * Adding sudo group
+
+ -- Juan Ramon Pelegrina <juapesai@hotmail.com>  Fri, 15 Feb 2019 09:07:30 +0100
+
+admin-center (0.8.1) bionic; urgency=medium
+
+  * Adding n4d module load in postinst
+
+ -- Hector Garcia Huerta <hectorgh@gmail.com>  Wed, 02 May 2018 10:12:07 +0200
+
+admin-center (0.8) bionic; urgency=medium
+
+  * first release
+
+ -- Hector Garcia Huerta <hectorgh@gmail.com>  Thu, 26 Apr 2018 14:29:24 +0200
+
+admin-center (0.7.1) xenial; urgency=medium
+
+  * Fixed promoted teachers access to admin capabilities
+
+ -- Jose A. Murcia <joamuran@gmail.com>  Tue, 20 Mar 2018 09:46:17 +0100
+
+admin-center (0.7) xenial; urgency=medium
+
+  * BUG: Append sleep 1 when check process status
+  * BUG: Change timeout for n4d calls on php bridge 
+  * Add support to cancel commands for task into taskman plugin
+  * Add support to htaccess files into admin-center site.
+  * New n4d php pure library 
+  * Moment.js and Datetimepicker is by default on admin-center
+  * Remove useless console.log functions
+
+ -- Raul Rodrigo Segura <raurodse@gmail.com>  Mon, 19 Feb 2018 11:51:57 +0100
+
+admin-center (0.6.11) xenial; urgency=medium
+
+  * Add allowOverride to add support to htaccess
+
+ -- Raul Rodrigo Segura <raurodse@gmail.com>  Wed, 10 Jan 2018 18:02:11 +0100
+
+admin-center (0.6.10) xenial; urgency=high
+
+  * Deleted --exit-with-children from xpra call
+
+ -- Jose A. Murcia <joamuran@gmail.com>  Wed, 15 Nov 2017 09:08:42 +0100
+
+admin-center (0.6.9) xenial; urgency=high
+
+  * Fixed FormFactory to solve checkboxes and select items bugs
+
+ -- Jose A. Murcia <joamuran@gmail.com>  Fri, 03 Nov 2017 11:48:09 +0100
+
+admin-center (0.6.8) xenial; urgency=high
+
+  * Added role managing for modules
+
+ -- Jose A. Murcia <joamuran@gmail.com>  Tue, 31 Oct 2017 11:28:55 +0100
+
+admin-center (0.6.7) xenial; urgency=high
+
+  * Fixed another bug in authentication due to double click on button
+
+ -- Jose A. Murcia <joamuran@gmail.com>  Thu, 21 Sep 2017 09:00:15 +0200
+
+admin-center (0.6.6) xenial; urgency=high
+
+  * Fixed bug in authentication due to session cleaning after a failed login
+
+ -- Jose A. Murcia <joamuran@gmail.com>  Wed, 20 Sep 2017 09:00:33 +0200
+
+admin-center (0.6.5) xenial; urgency=medium
+
+  * Added new method for getting XPRA Connections
+  * Added dependency for python-plumbum
+
+ -- Jose A. Murcia <joamuran@gmail.com>  Tue, 18 Jul 2017 13:41:51 +0200
+
+admin-center (0.6.4.11) xenial; urgency=high
+
+  * Fixed login.js
+
+ -- lliurex <joamuran@gmail.com>  Mon, 19 Jun 2017 12:47:56 +0200
+
+admin-center (0.6.4.10) xenial; urgency=high
+
+  * fixed ca@valencia.
+
+ -- Jose A. Murcia <joamuran@gmail.com>  Tue, 16 May 2017 10:50:46 +0200
+
+admin-center (0.6.4.9) xenial; urgency=high
+
+  * Fixed link to icons from icones (fixes logo access permissions in main page)
+
+ -- Jose A. Murcia <joamuran@gmail.com>  Fri, 12 May 2017 09:48:14 +0200
+
+admin-center (0.6.4.8) xenial; urgency=high
+
+  * Removing debug messages in wsmanager 
+
+ -- Hector Garcia Huerta <hectorgh@gmail.com>  Thu, 27 Apr 2017 12:14:00 +0200
+
+admin-center (0.6.4.7) xenial; urgency=high
+
+  * Added debian/admin-center.links to ipxeboot
+
+ -- Jose A. Murcia <joamuran@gmail.com>  Thu, 20 Apr 2017 15:07:17 +0200
+
+admin-center (0.6.4.6) xenial; urgency=high
+
+  * Fixed links creation in postinstall
+
+ -- Jose A. Murcia <joamuran@gmail.com>  Tue, 21 Mar 2017 14:18:15 +0100
+
+admin-center (0.6.4.5) xenial; urgency=high
+
+  * Fixed lliurex-www link and added index.php link to main.php
+
+ -- Jose A. Murcia <joamuran@gmail.com>  Mon, 20 Mar 2017 12:21:03 +0100
+
+admin-center (0.6.4.4) xenial; urgency=high
+
+  * modified lliurex-www link
+
+ -- Jose A. Murcia <joamuran@gmail.com>  Mon, 06 Mar 2017 13:47:01 +0100
+
+admin-center (0.6.4.3) xenial; urgency=high
+
+  * Fixed language detection
+
+ -- Jose A. Murcia <joamuran@gmail.com>  Wed, 08 Feb 2017 12:50:37 +0100
+
+admin-center (0.6.4.2) xenial; urgency=medium
+
+  * Fixed css
+  * Fixed i18n
+
+ --  <jose@xen>  Thu, 19 Jan 2017 13:56:52 +0100
+
+admin-center (0.6.4.1) xenial; urgency=high
+
+  * Fixed some translations
+  * Modified FormFactory to include child ids in parent node to mark as validation errors.
+
+ --  <jose@gmail.com>  Wed, 11 Jan 2017 14:19:14 +0100
+
+admin-center (0.6.4) xenial; urgency=high
+
+  * Fixed formfactory.js
+  * Fixed key size
+
+ -- Jose <joamuran@gmail.com>  Thu, 22 Dec 2016 21:10:39 +0100
+
+admin-center (0.6.3) xenial; urgency=high
+
+  * Modified left menu behaviour, with Back Button support
+  * Added es layout to Xephyr
+  * Added module description support for main menu
+
+ -- Jose A. Murcia <joamuran@gmail.com>  Wed, 14 Dec 2016 13:36:18 +0100
+
+admin-center (0.6.2) xenial; urgency=high
+
+  * Utils.n4d modified to be less restrictive, now only encrypts user and password
+  * New Utils.n4dSecure method to be more restrictive (old funtionality)
+  * Fixed i18n
+  * Fixed some css 
+
+ -- Jose A. Murcia <joamuran@gmail.com>  Wed, 30 Nov 2016 14:22:43 +0100
+
+admin-center (0.6.1.1) xenial; urgency=high
+
+  * Fixed changelog
+
+ -- Jose A. Murcia <joamuran@gmail.com>  Thu, 17 Nov 2016 14:36:19 +0100
+
+admin-center (0.6.1) xenial; urgency=high
+
+  * Added new notify log on bottom
+  * Fixed some styles
+  * Adding support to module headers
+
+ --  <joamuran@gmail.com>  Thu, 17 Nov 2016 14:27:41 +0100
+
+admin-center (0.6) xenial; urgency=high
+
+  * New main window with module selector
+  * Other minor changes
+
+ --  <joamuran@gmail.com>  Fri, 11 Nov 2016 14:16:18 +0100
+
+admin-center (0.5.12) xenial; urgency=high
+
+  * Fixed help default language as valencian
+
+ --  <joamuran@gmail.com>  Thu, 27 Oct 2016 11:43:06 +0200
+
+admin-center (0.5.11) xenial; urgency=high
+
+  * Added markdown files support for help
+
+ --  <joamuran@gmail.com>  Tue, 25 Oct 2016 13:02:09 +0200
+
+admin-center (0.5.10) xenial; urgency=high
+
+  * Added form factory library
+  * Fixed RSA Key from 2048 to 8192 bits.
+
+ --  <joamuran@gmail.com>  Fri, 07 Oct 2016 13:10:36 +0200
+
+admin-center (0.5.9) xenial; urgency=high
+
+  * Added NoUISlider library
+  * Fixed i18n 
+
+ -- joamuran <joamuran@gmail.com>  Thu, 21 Jul 2016 15:00:45 +0200
+
+admin-center (0.5.8) xenial; urgency=high
+
+  * Added aes encryption for n4d responses
+
+ -- joamuran <joamuran@gmail.com>  Fri, 15 Jul 2016 13:17:01 +0200
+
+admin-center (0.5.7) xenial; urgency=high
+
+  * Added rsa encryption to n4dwithextraparams
+
+ -- joamuran <joamuran@gmail.com>  Thu, 07 Jul 2016 14:46:34 +0200
+
+admin-center (0.5.6) xenial; urgency=high
+
+  * Fixed
+
+ -- joamuran <joamuran@gmil.com>  Thu, 07 Jul 2016 14:01:40 +0200
+
+admin-center (0.5.5) xenial; urgency=high
+
+  * Added rsa encryption to credentials
+
+ -- joamuran <joamuran@gmail.com>  Thu, 07 Jul 2016 13:50:29 +0200
+
+admin-center (0.5.4) xenial; urgency=high
+
+  * Fixed control and rules
+  * Added progress library
+  * Fixed main.css
+
+ -- Jose A. Múrcia Andrés <joamuran@gmail.com>  Tue, 28 Jun 2016 09:23:59 +0200
+
+admin-center (0.5.3) xenial; urgency=high
+
+  * Fixed dependencies
+
+ -- joamuran <joamuran@gmail.com>  Fri, 24 Jun 2016 10:19:53 +0200
+
+admin-center (0.5.2) xenial; urgency=high
+
+  * Updated libraries
+  * Fixed n4d curl call with timeout and syncronous
+  * Customized material
+
+ -- joamuran <joamuran@gmail.com>  Thu, 23 Jun 2016 17:22:50 +0200
+
+admin-center (0.5.1) xenial; urgency=high
+
+  * Added some enhacements in log modal window
+
+ -- joamuran <joamuran@gmail.com>  Thu, 09 Jun 2016 16:18:33 +0200
+
+admin-center (0.5) xenial; urgency=high
+
+  * Added new logging environment and Task Manager (TaskMan)
+  * Added python libreries (wsmnager.py and actasks) to support TaskMan
+
+ -- joamuran <joamuran@gmail.com>  Wed, 08 Jun 2016 12:51:18 +0200
+
+admin-center (0.4.7) xenial; urgency=high
+
+  * Fixed dependencies
+
+ -- joamuran <joamuran@gmail.com>  Mon, 16 May 2016 12:41:43 +0200
+
+admin-center (0.4.6) xenial; urgency=high
+
+  * fixed
+
+ -- joamuran <joamuran@gmail.com>  Fri, 13 May 2016 14:08:45 +0200
+
+admin-center (0.4.5) xenial; urgency=high
+
+  * fixed some logging issues and asyncronous curl
+
+ -- joamuran <joamuran@gmail.com>  Fri, 13 May 2016 10:02:58 +0200
+
+admin-center (0.4.4) xenial; urgency=high
+
+  * Added spanish translations
+
+ -- joamuran <joamuran@gmail.com>  Mon, 02 May 2016 13:28:27 +0200
+
+admin-center (0.4.3) xenial; urgency=high
+
+  * Added link to server main page
+
+ -- joamuran <joamuran@gmail.com>  Mon, 02 May 2016 12:59:53 +0200
+
+admin-center (0.4.2) xenial; urgency=high
+
+  * changed dependencies to php7 and python-simplewebsocketserver
+
+ -- joamuran <joamuran@gmail.com>  Mon, 02 May 2016 11:31:38 +0200
+
+admin-center (0.4.1) xenial; urgency=high
+
+  * n4d description file for RemoteWebGui fixed
+
+ -- joamuran <joamuran@gmail.com>  Fri, 01 Apr 2016 11:52:19 +0200
+
+admin-center (0.4) xenial; urgency=high
+
+  * Xenial import
+
+ -- joamuran <joamuran@gmail.com>  Thu, 31 Mar 2016 17:17:36 +0200
+
+admin-center (0.3.2) trusty; urgency=high
+
+  * Added llxcfg-dev build dependency
+
+ -- joamuran <joamuran@gmail.com>  Wed, 30 Mar 2016 12:38:14 +0200
+
+admin-center (0.3.1) trusty; urgency=high
+
+  * Fixed cxhangelog
+
+ -- joamuran <joamuran@gmail.com>  Wed, 30 Mar 2016 12:28:23 +0200
+
+admin-center (0.3) trusty; urgency=high
+
+  * updated
+
+ -- Jose A. Murcia <joamuran@gmail.com>  Tue, 29 Mar 2016 11:21:51 +0200
+
+admin-center (0.2) trusty; urgency=high
+
+  * Added n4d.php, an n4d wrapper
+  * Added Utils.n4d method to replace Utils.n4dCall, to use ajax to n4d.php instead of xmlrpc directly to n4d
+
+ -- Jose A. Murcia <joamuran@gmail.com>  Fri, 26 Feb 2016 09:55:45 +0100
+
+admin-center (0.1) trusty; urgency=high
+
+  * Initial release.
+
+ -- Jose A. Murcia <joamuran@gmail.com>  Fri, 29 Jan 2016 13:51:34 +0100

@@ -1,0 +1,17 @@
+Source: admin-center
+Section: admin
+Priority: extra
+Maintainer: LliureX Team <lliurex@lliurex.net>
+Build-Depends: debhelper (>= 8.0.0)
+Standards-Version: 3.9.7
+Homepage: http://www.lliurex.net
+#Vcs-Git: git://git.debian.org/collab-maint/lliurex-guard.git
+#Vcs-Browser: http://git.debian.org/?p=collab-maint/lliurex-guard.git;a=summary
+
+Package: admin-center
+Architecture: all
+Depends: ${misc:Depends}, php7.2-common, libapache2-mod-php7.2, php7.2-cli, php7.2-curl, php7.2-xmlrpc, python-simplewebsocketserver, python-websocket, websockify, python-plumbum, python-psutil, systemd-container, novnc
+Description: Web Administration Center
+ This interface allows to configure n4d serives
+ on LliureX Server via web.
+ 
