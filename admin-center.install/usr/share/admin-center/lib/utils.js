@@ -15,6 +15,7 @@ function UtilsClass(){
     this.crypt=new JSEncrypt(); // Class to encrypt and decrypt keys
     //this.crypt.default_key_size=8192;
     this.crypt.default_key_size=2048;
+    this.max_param_length=245;
     //alert('initializing keys');
     this.mycrypt = new JSEncrypt({default_key_size:1024})
     this.mycrypt.getKey();
@@ -572,11 +573,23 @@ UtilsClass.prototype.n4d=function n4d(credentials, n4dclass, n4dmethod, arglist,
         n4dargs[i] = Utils.crypt.encrypt(n4dargs[i])
     }
     for (let i=0;i<arglist.length;i++){
+        let parameter=""
+        let string_parameter=""
         if (typeof(arglist[i]) != "string"){
-            n4dargs.push(Utils.crypt.encrypt(JSON.stringify(arglist[i])));
+            string_parameter=JSON.stringify(arglist[i])
         }else{
-            n4dargs.push(Utils.crypt.encrypt(arglist[i]));
+            string_parameter=arglist[i]
         }
+        if (string_parameter.length > this.max_param_length){
+            while (string_parameter.length > 0){
+                let part=string_parameter.substring(0,this.max_param_length)
+                string_parameter = string_parameter.substring(this.max_param_length)
+                parameter=parameter+Utils.crypt.encrypt(part)
+            }
+        }else{
+            parameter=Utils.crypt.encrypt(string_parameter)
+        }
+        n4dargs.push(parameter)
     }
     $("body").css("cursor", "wait");
     $.ajax({
