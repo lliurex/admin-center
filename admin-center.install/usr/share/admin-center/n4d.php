@@ -58,7 +58,16 @@ function n4d($method, $args, $timeout){
             error_log("N4d call ".$method." with arguments1:".var_export($args,true));
         }
         for ($i=0;$i<count($args);$i++){
-            $tmp1 = n4dRSADecrypt($args[$i]);
+            $parameter="";
+            if (strlen($args[$i])>344){
+                $chunks=str_split($args[$i],344);
+                for ($n=0;$n<count($chunks);$n++){
+                    $parameter.=n4dRSADecrypt($chunks[$n]);
+                }
+            }else{
+                $parameter=n4dRSADecrypt($args[$i]);
+            }
+            $tmp1 = $parameter;
             $tmp2 = json_decode($tmp1);
             if (json_last_error()==JSON_ERROR_NONE){
                 $args[$i] = $tmp2;
