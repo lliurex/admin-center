@@ -78,14 +78,16 @@ function writeModulesContainers($modules){
 
 
 function importCommonScripts(){
+  $path='/usr/share/admin-center/';
   /* Common Scripts */
-  echo('<script type="text/javascript" src="js/main.js"></script>');
-  echo('<script type="text/javascript" src="js/sidebar_menu.js"></script>');
+  echo('<script type="text/javascript" src="js/main.js'.sprintf("?nocache=%s",filemtime($path.'js/main.js')).'"></script>');
+  echo('<script type="text/javascript" src="js/sidebar_menu.js'.sprintf("?nocache=%s",filemtime($path.'js/sidebar_menu.js')).'"></script>');
   echo('<script type="text/javascript" src="lib/node_modules/jed/jed.js"></script>');
-  echo('<script type="text/javascript" src="lib/i18n.js"></script>');
+  echo('<script type="text/javascript" src="lib/i18n.js'.sprintf("?nocache=%s",filemtime($path.'lib/i18n.js')).'"></script>');
 };
 
 function importCommonLibraries(){
+  $path='/usr/share/admin-center/';
   echo ('<!-- Common Libraries -->');
   echo ('<script type="text/javascript" src="lib/jquery/jquery.js"></script>');
   //echo ('<script type="text/javascript" src="lib/jquery.xmlrpc.js"></script>');
@@ -100,10 +102,10 @@ function importCommonLibraries(){
   echo ('<script type="text/javascript" src="lib/jquery-ui/jquery-ui.js"></script>');
   
   echo ('<script type="text/javascript" src="lib/jsencrypt/jsencrypt.js"></script>');
-  echo ('<script type="text/javascript" src="lib/waitwin.js"></script>');
+  echo ('<script type="text/javascript" src="lib/waitwin.js'.sprintf("?nocache=%s",filemtime($path.'lib/waitwin.js')).'"></script>');
   echo ('<script type="text/javascript" src="lib/formFactory.js"></script>');
   echo ('<script type="text/javascript" src="lib/markdown/showdown.min.js"></script>');
-  echo ('<script type="text/javascript" src="lib/utils.js"></script>');
+  echo ('<script type="text/javascript" src="lib/utils.js'.sprintf("?nocache=%s",filemtime($path.'lib/utils.js')).'"></script>');
   echo ('<script type="text/javascript" src="lib/nouislider/nouislider.min.js"></script>');
   echo ('<script type="text/javascript" src="lib/progressbarjs/progressbar.min.js"></script>');
   echo ('<script type="text/javascript" src="lib/cryptojs-aes/aes.js"></script>');
