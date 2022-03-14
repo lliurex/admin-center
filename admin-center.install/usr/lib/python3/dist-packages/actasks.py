@@ -94,7 +94,7 @@ class Task:
         
         # Create temp logfile
         temp = tempfile.NamedTemporaryFile(prefix='pipe_', dir=self.logfolder, delete=False)
-        proc = subprocess.Popen([self.command+"; sleep 5"],  shell=True, stdout=temp, preexec_fn=os.setsid)
+        proc = subprocess.Popen([self.command+"; sleep 5"],  shell=True, stdout=temp, stderr=temp, preexec_fn=os.setsid)
 
         # Adding process
         self.process = proc
