@@ -72,8 +72,8 @@ function n4d($method, $args, $timeout){
         
       $data = curl_exec($ch);
            
-      curl_close($ch);
       $request_error = curl_errno($ch);
+      curl_close($ch);
       if( $request_error > 0 ){
         echo(AESEncrypt(json_encode(array('status'=> False, 'msg' => 'Curl error ' . strval($request_error))))); 
       }
