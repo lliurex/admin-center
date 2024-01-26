@@ -10,7 +10,7 @@ Homepage: http://www.lliurex.net
 
 Package: admin-center
 Architecture: all
-Depends: ${misc:Depends}, php7.4-common, libapache2-mod-php7.4, php7.4-cli, php7.4-curl, php7.4-xmlrpc, php7.4-xml, python3-simplewebsocketserver, python3-websocket, websockify, python3-plumbum, python3-psutil, systemd-container, novnc
+Depends: ${misc:Depends}, php8.1-common, libapache2-mod-php8.1, php8.1-cli, php8.1-curl, php8.1-xmlrpc, php8.1-xml, python3-simplewebsocketserver, python3-websocket, websockify, python3-plumbum, python3-psutil, systemd-container, novnc
 Description: Web Administration Center
  This interface allows to configure n4d serives
  on LliureX Server via web.
