@@ -123,6 +123,7 @@ function readComponents($modules){
     $module = json_decode($moduleManifestString, true);
 
     # If user is admin, let's add module
+    if (!array_key_exists('groups', $_SESSION)){return;};
     if ((in_array("sudo", $_SESSION['groups']) or in_array("admins", $_SESSION['groups'])) or ($module["roles"]=="teachers"))
       $modulefilelist[$moduleName]=$module;
     
