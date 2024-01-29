@@ -1,3 +1,9 @@
+admin-center (0.13) jammy; urgency=medium
+
+  * First jammy version
+
+ -- Raul Rodrigo Segura <raurodse@gmail.com>  Mon, 29 Jan 2024 17:40:51 +0100
+
 admin-center (0.12) focal; urgency=medium
 
   * Add stderr to output on taskman plugin
