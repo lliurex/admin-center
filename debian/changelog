@@ -1,3 +1,9 @@
+admin-center (0.13.2) jammy; urgency=medium
+
+  * VNC now open editor
+
+ -- Raul Rodrigo Segura <raurodse@gmail.com>  Tue, 09 Apr 2024 11:22:41 +0200
+
 admin-center (0.13.1) jammy; urgency=medium
 
   * Add patch to start vnc
